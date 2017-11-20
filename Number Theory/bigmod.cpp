@@ -5,7 +5,7 @@ int bigmod(int a, int b, int M) //may require long long
 {                               //check input range
     if(b==0) return 1%M;
     int x = bigmod(a, b/2, M);
-    x = (x*x)%M;
+    x = (x*x)%M;    //may overflow
     if(b%2==1) x = (x*a)%M;
     return x;
 }
