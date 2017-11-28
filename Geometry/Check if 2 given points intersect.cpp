@@ -1,3 +1,4 @@
+//Reference: http://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/
 #include <bits/stdc++.h>
 using namespace std;
 
