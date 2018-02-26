@@ -28,7 +28,7 @@ struct debugger{
 int main()
 {
     #ifdef forthright48
-    //freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     //freopen("output.txt", "w", stdout);
     #endif // forthright48
 
