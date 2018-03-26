@@ -24,7 +24,7 @@ struct Node
     }
 };
 
-vector<Node> G[SIZE];
+vector<pair<int, int> > G[SIZE];
 
 void  dijkstra(int source)
 {
@@ -50,8 +50,8 @@ void  dijkstra(int source)
         int u = curr.id;
 
         for(int i=0; i<G[u].size(); i++) {
-            int v = G[u][i].id;
-            int cost = G[u][i].dist;
+            int v = G[u][i].first;
+            int cost = G[u][i].second;
 
             if(dis[u]+cost < dis[v]) {
                 dis[v] = dis[u] + cost;
@@ -89,10 +89,8 @@ int main () {
         int a, b, w;
         scanf("%d %d %d", &a, &b, &w);
 
-        Node aa(a, w), bb(b, w);
-
-        G[a].push_back(bb);
-        G[b].push_back(aa);
+        G[a].push_back(pair<int, int>(a, w));
+        G[b].push_back(pair<int, int>(b, w));
     }
 
     dijkstra(1);
