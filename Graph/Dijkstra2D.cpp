@@ -12,7 +12,6 @@ int d[SIZE][SIZE];
 
 int cell[SIZE][SIZE];
 
-
 int row, col;
 
 struct Node
