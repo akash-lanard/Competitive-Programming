@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 #define SIZE 1005
 
 int fx[] = {1, -1, 0, 0};
