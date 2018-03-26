@@ -48,6 +48,9 @@ void  dijkstra(int source)
         Q.pop();
 
         int u = curr.id;
+        int curr_dist = curr.dist;
+        
+        if(curr_dist!=dis[u]) continue;
 
         for(int i=0; i<G[u].size(); i++) {
             int v = G[u][i].first;
