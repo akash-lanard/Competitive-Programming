@@ -1,32 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define SIZE 15
+#define SIZE 3005
 
 int parent[SIZE];
 
 int flag;
 
 int cnt;
-double sum;
+int sum;
 
 struct edge {
     int u, v;
-    double w;
+    int w;
 
     edge() { }
 
-    edge(int a, int b, double c)
+    edge(int a, int b, int c)
     {
         u = a;
         v = b;
         w = c;
     }
-    bool operator<(const edge& p) const
-    {
-        return w < p.w;
-    }
 };
+
+bool comp(const edge& a, const edge& b)
+{
+    if(a.w < b.w) return true;
+    else return false;
+}
 
 vector<edge> edgeVec;
 
@@ -75,12 +77,12 @@ void Union(int a, int b)
 
 double mst(int n)
 {
-    sort(edgeVec.begin(), edgeVec.end());
+    sort(edgeVec.begin(), edgeVec.end(), comp);
 
     init_disjoint_set(SIZE);
 
     cnt = 0;
-    sum = 0.0;
+    sum = 0;
 
     for(int i=0; i<edgeVec.size(); i++) {
         flag = 0;
@@ -93,6 +95,11 @@ double mst(int n)
     }
 
     return sum;
+}
+
+void clr()
+{
+    edgeVec.clear();
 }
 
 int main () {
