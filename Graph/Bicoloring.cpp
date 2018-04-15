@@ -7,7 +7,7 @@ int color[SIZE];
 
 vector<int> G[SIZE];
 
-vector<pii> myvec;
+vector<pair<int, int> > myvec;
 
 int color1cnt, color2cnt;
 
@@ -44,7 +44,7 @@ bool Bicoloring(int source)
         }
     }
 
-    myvec.push_back(pii(color1cnt, color2cnt));
+    myvec.push_back(pair<int, int>(color1cnt, color2cnt));
     return true;
 }
 
