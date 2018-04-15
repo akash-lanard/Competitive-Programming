@@ -33,8 +33,15 @@ bool Bicoloring(int source)
     return true;
 }
 
+void clr()
+{
+    for(int i=0; i<SIZE; i++) G[i].clear();
+}
+
 int main()
 {
+    clr();
+    
     G[1].push_back(2);
     G[1].push_back(3);
     G[2].push_back(1);
