@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define SIZE 6
+#define SIZE 2005
 
-vector<int> G[SIZE+5];
+vector<int> G[SIZE];
 
 bool Bicoloring(int source)
 {
     queue<int> Q;
     Q.push(source);
 
-    int color[SIZE+5];
+    int color[SIZE];
     memset(color, 0, sizeof(color));
     color[source] = 1;
 
@@ -19,13 +19,14 @@ bool Bicoloring(int source)
         Q.pop();
 
         for(int v=0; v<G[u].size(); v++) {
-            if(color[G[u][v]]==0) {
-                if(color[u]==1) color[G[u][v]] = 2;
-                else color[G[u][v]] = 1;
-                Q.push(G[u][v]);
+            int curr = G[u][v];
+            if(color[curr]==0) {
+                if(color[u]==1) color[curr] = 2;
+                else color[curr] = 1;
+                Q.push(curr);
             }
 
-            if(color[u]==color[G[u][v]]) return false;
+            if(color[u]==color[curr]) return false;
         }
     }
 
