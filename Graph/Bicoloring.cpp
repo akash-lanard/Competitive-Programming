@@ -3,16 +3,24 @@ using namespace std;
 
 #define SIZE 2005
 
+int color[SIZE];
+
 vector<int> G[SIZE];
+
+vector<pii> myvec;
+
+int color1cnt, color2cnt;
 
 bool Bicoloring(int source)
 {
     queue<int> Q;
     Q.push(source);
 
-    int color[SIZE];
-    memset(color, 0, sizeof(color));
+    color1cnt = 0;
+    color2cnt = 0;
+
     color[source] = 1;
+    color1cnt++;
 
     while(Q.size()!=0) {
         int u = Q.front();
@@ -21,8 +29,14 @@ bool Bicoloring(int source)
         for(int v=0; v<G[u].size(); v++) {
             int curr = G[u][v];
             if(color[curr]==0) {
-                if(color[u]==1) color[curr] = 2;
-                else color[curr] = 1;
+                if(color[u]==1) {
+                    color[curr] = 2;
+                    color2cnt++;
+                }
+                else {
+                    color[curr] = 1;
+                    color1cnt++;
+                }
                 Q.push(curr);
             }
 
@@ -30,6 +44,7 @@ bool Bicoloring(int source)
         }
     }
 
+    myvec.push_back(pii(color1cnt, color2cnt));
     return true;
 }
 
