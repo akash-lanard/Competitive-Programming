@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define SIZE 11
+#define SIZE 1005
 #define BIG 100000000
 
 vector<int> G[SIZE];
-int level[SIZE+5];
+int level[SIZE];
 
 void BFS(int source)
 {
@@ -20,13 +20,19 @@ void BFS(int source)
         Q.pop();
 
         for(int v = 0; v<G[u].size(); v++) {
-            if(level[G[u][v]] == BIG) {
-                level[G[u][v]] = level[u] + 1;
-                Q.push(G[u][v]);
+            int curr = G[u][v];
+            if(level[curr] == BIG) {
+                level[curr] = level[u] + 1;
+                Q.push(curr);
             }
         }
     }
     return;
+}
+
+void clr()
+{
+    for(int i=0; i<SIZE; i++) G[i].clear();
 }
 
 int main()
