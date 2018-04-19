@@ -10,10 +10,12 @@ int d[100][100], vis[100][100];
 
 int row, col;
 
-void bfs(int sx, int sy)
+void BFS2D(int sx, int sy)
 {
     memset(vis, 0, sizeof(vis));
     vis[sx][sy] = 1;
+
+    memset(d, 0, sizeof(d));
 
     queue<pair<int, int> > q;
     q.push(pair<int, int>(sx, sy));
@@ -34,12 +36,18 @@ void bfs(int sx, int sy)
 
 }
 
+void clr()
+{
+    memset(cell, 0, sizeof(cell));
+}
+
 int main()
 {
     row = 8;
     col = 8;
 
-    memset(cell, 0, sizeof(cell));
+    clr();
+    
     cell[0][1] = -1;
     cell[1][1] = -1;
 
