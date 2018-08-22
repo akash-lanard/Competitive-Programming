@@ -92,8 +92,8 @@ int main () {
         int a, b, w;
         scanf("%d %d %d", &a, &b, &w);
 
-        G[a].push_back(pair<int, int>(a, w));
-        G[b].push_back(pair<int, int>(b, w));
+        G[a].push_back(pair<int, int>(b, w));
+        G[b].push_back(pair<int, int>(a, w));
     }
 
     dijkstra(1);
