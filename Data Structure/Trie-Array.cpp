@@ -72,10 +72,10 @@ int main()
         root.insert(keys[i]);
     }
 
-    string str1 = "the", str2 = "these"; //prints 3 and 0
+    string str1 = "the", str2 = "these";
 
-    cout << root.search(str1) << endl;
-    cout << root.search(str2) << endl;
+    cout << root.search(str1) << endl; /// prints 3
+    cout << root.search(str2) << endl; /// prints 0
 
     return 0;
 }
