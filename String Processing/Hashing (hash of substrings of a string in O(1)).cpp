@@ -121,9 +121,6 @@ const double eps = 1e-11;
 
 ///======================  TEMPLATE ENDS HERE  =====================///
 
-# include <bits/stdc++.h>
-using namespace std;
-
 struct Hashing {
     long long *hash1, *hash2;
     long long *inv1, *inv2;
