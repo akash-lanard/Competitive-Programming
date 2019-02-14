@@ -118,6 +118,7 @@ const vlong inf = 2147383647;
 const vlong mod = 1000000007;
 const double pi = 2 * acos ( 0.0 );
 const double eps = 1e-11;
+//mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); /// For generating random numbers
 
 ///======================  TEMPLATE ENDS HERE  =====================///
 
