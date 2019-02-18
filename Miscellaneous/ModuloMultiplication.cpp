@@ -131,7 +131,7 @@ long long moduloMultiplication(long long a, long long b, long long m) {
             res = (res + a) % m;
         }
         a = (2*a)%m;
-        b >>= 1;
+        b /= 2;
     }
 
     return res;
