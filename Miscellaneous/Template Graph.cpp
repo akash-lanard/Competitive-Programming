@@ -290,6 +290,9 @@ int main()
 
 ///..............................Dijkstra...................................................
 
+#include <bits/stdc++.h>
+using namespace std;
+
 #define SIZE 100005
 #define BIG 1000000000000005
 
@@ -338,7 +341,7 @@ void  dijkstra(int source)
 
         int u = curr.id;
         int curr_dist = curr.dist;
-
+        
         if(curr_dist!=dis[u]) continue;
 
         for(int i=0; i<G[u].size(); i++) {
@@ -381,8 +384,8 @@ int main () {
         int a, b, w;
         scanf("%d %d %d", &a, &b, &w);
 
-        G[a].push_back(pair<int, int>(a, w));
-        G[b].push_back(pair<int, int>(b, w));
+        G[a].push_back(pair<int, int>(b, w));
+        G[b].push_back(pair<int, int>(a, w));
     }
 
     dijkstra(1);
