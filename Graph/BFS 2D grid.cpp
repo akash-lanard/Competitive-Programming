@@ -51,7 +51,7 @@ int main()
     cell[0][1] = -1;
     cell[1][1] = -1;
 
-    bfs(0, 0);
+    BFS2D(0, 0);
 
     cout << d[0][2] << endl;
 
