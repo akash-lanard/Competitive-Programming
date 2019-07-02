@@ -1,0 +1,5 @@
+Theorem: Raising an adjacency matrix A of simple graph G to the n-th power gives the 
+number of n-length walks between two vertices vi, vj of G in the resulting matrix.
+  
+Two trees of heights a and b are p meters apart. The height of the point of intersection of the lines 
+joining the top of each tree to the foot of the opposite tree is given by (a*b)/(a+b).
