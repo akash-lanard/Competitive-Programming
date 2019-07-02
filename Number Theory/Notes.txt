@@ -1,0 +1,3 @@
+Amount of prime numbers non greater than n is about n/log(n).
+Amount of palindrome numbers with fixed length k — it is about 10^((k+1)/2).
+Therefore the number of primes asymptotically bigger than the number of palindromic numbers.
