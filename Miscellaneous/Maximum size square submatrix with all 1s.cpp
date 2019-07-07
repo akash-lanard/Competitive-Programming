@@ -3,8 +3,6 @@
 int n, m;
 int A[SIZE][SIZE], S[SIZE][SIZE];
 
-vector<myStruct> myVec;
-
 int calcMax() {
     memset(S, 0, sizeof(S));
 
