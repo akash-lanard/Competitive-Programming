@@ -1,4 +1,3 @@
-///====================== TEMPLATE STARTS HERE =====================///
 #include <bits/stdc++.h>
 using namespace std;
 
