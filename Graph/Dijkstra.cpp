@@ -1,20 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define LL long long
 #define SIZE 100005
 #define BIG 1000000000000005
+typedef pair<int, LL> pil;
 
-long long dis[SIZE];
-int pre[SIZE];
+vector<pil> G[SIZE];        /// Graph
+LL dis[SIZE];               /// distance array
+int pre[SIZE];              /// prev (for path print)
 
-struct Node
-{
-    int id, dist;
+struct Node {
+    int id;
+    LL dist;
 
     Node() {}
 
-    Node(int id, int dist)
-    {
+    Node(int id, LL dist) {
         this->id = id;
         this->dist = dist;
     }
@@ -24,11 +26,10 @@ struct Node
     }
 };
 
-vector<pair<int, int> > G[SIZE];
+priority_queue<Node> Q;
 
-void  dijkstra(int source)
-{
-    priority_queue<Node> Q;
+void  dijkstra(int source) {
+    while(!Q.empty()) Q.pop();
 
     for(int i=0; i<SIZE; i++) {
         dis[i] = BIG;
@@ -48,13 +49,13 @@ void  dijkstra(int source)
         Q.pop();
 
         int u = curr.id;
-        int curr_dist = curr.dist;
-        
+        LL curr_dist = curr.dist;
+
         if(curr_dist!=dis[u]) continue;
 
         for(int i=0; i<G[u].size(); i++) {
             int v = G[u][i].first;
-            int cost = G[u][i].second;
+            LL cost = G[u][i].second;
 
             if(dis[u]+cost < dis[v]) {
                 dis[v] = dis[u] + cost;
@@ -72,8 +73,7 @@ void  dijkstra(int source)
     //printf("\n");
 }
 
-void clr()
-{
+void clr() {
     for(int i=0; i<SIZE; i++) G[i].clear();
 }
 
@@ -89,11 +89,12 @@ int main () {
     scanf("%d %d", &n, &m);
 
     for(int i=0; i<m; i++) {
-        int a, b, w;
-        scanf("%d %d %d", &a, &b, &w);
+        int a, b;
+        LL w;
+        scanf("%d %d %lld", &a, &b, &w);
 
-        G[a].push_back(pair<int, int>(b, w));
-        G[b].push_back(pair<int, int>(a, w));
+        G[a].push_back(pil(b, w));
+        G[b].push_back(pil(a, w));
     }
 
     dijkstra(1);
