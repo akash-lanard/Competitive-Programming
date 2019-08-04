@@ -1,22 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define mx 100000000
+#define Set(N,p) N=((N)|((1LL)<<(p)))
+#define Reset(N,p) N=((N)&(~((1LL)<<(p))))
+#define Check(N,p) (!(((N)&((1LL)<<(p)))==(0)))
 
-int status[(mx/32)+2];
+#define SIZE 100000000
+
+int status[(SIZE/32)+2];
 vector<int> Prime;
 
-bool Check(int N, int pos){return (bool)(N & (1<<pos));}
-int Set(int N, int pos) {return N = N|(1<<pos);}
 
-void sieve(int N)
-{
+void sieve(int N) {
     int i, j, sqrtN(N);
     sqrtN = (int)sqrt(N);
     for(i=3; i<=sqrtN; i+=2) {
-        if(Check(status[i>>5], i&31)==0) {
+        if(!Check(status[i>>5], i&31)) {
             for(j = i*i; j<=N; j += (i<<1)) {
-                status[j>>5] = Set(status[j>>5], j&31);
+                Set(status[j>>5], j&31);
             }
         }
     }
@@ -29,9 +30,14 @@ void sieve(int N)
     }
 }
 
-int main()
-{
+int main() {
+
     sieve(100000000);
+
+    cout << "Prime contains (first 25):\n";
+    for(int i=0; i<25; i++) {
+        cout << Prime[i] << endl;
+    }
 
     return 0;
 }
