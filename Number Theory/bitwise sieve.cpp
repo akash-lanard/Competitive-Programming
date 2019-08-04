@@ -7,15 +7,15 @@ using namespace std;
 
 #define SIZE 100000000
 
-int status[(SIZE/32)+2];
-vector<int> Prime;
+int status[(SIZE/32)+2]; // bit is 0 = prime, 1 = non-prime
+vector<int> Prime;  // Prime vector
 
 
 void sieve(int N) {
     int i, j, sqrtN(N);
     sqrtN = (int)sqrt(N);
     for(i=3; i<=sqrtN; i+=2) {
-        if(!Check(status[i>>5], i&31)) {
+        if(!Check(status[i>>5], i&31)) { // i>>5 = i/32, i&31 = i%32
             for(j = i*i; j<=N; j += (i<<1)) {
                 Set(status[j>>5], j&31);
             }
