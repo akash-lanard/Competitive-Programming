@@ -5,7 +5,8 @@ using namespace std;
 
 #define SIZE 1000002
 
-vector<LL> Prime, P; //Prime vector
+vector<LL> Prime; //Prime vector
+vector<LL> P; //Primes till sqrt(n)
 
 int mark[SIZE]; //1 if not prime, 0 if prime
 
