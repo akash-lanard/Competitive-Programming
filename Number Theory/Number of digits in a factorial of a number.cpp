@@ -3,8 +3,7 @@ using namespace std;
 
 double cumsum[10000010];
 
-void f()
-{
+void f() {
     cumsum[0] = 0.0;
     double sum = 0.0;
     for(int i=1; i<10000010; i++) {
@@ -13,8 +12,7 @@ void f()
     }
 }
 
-int main()
-{
+int main() {
     f();
     int tc;
     scanf("%d", &tc);
