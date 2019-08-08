@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int findMaxArea(int ara[], int n) //Note: may require long long for larger inputs
-{
+int findMaxArea(int ara[], int n)  { //Note: may require long long for larger inputs
     stack<int> s;
     int i=0;
     int maxArea = 0;
@@ -28,8 +27,7 @@ int findMaxArea(int ara[], int n) //Note: may require long long for larger input
     return maxArea;
 }
 
-int main()
-{
+int main() {
     while(1) {
         int n;
         scanf("%d", &n);
