@@ -32,8 +32,7 @@ void sieve(int n) {
 }
 
 //n should be small
-map<int, int> primeFactNFact(int n)
-{
+map<int, int> primeFactNFact(int n) {
     map<int, int> m;
     for(int i=0; i<Prime.size(); i++) {
         if(Prime[i]>n) break;
@@ -49,8 +48,7 @@ map<int, int> primeFactNFact(int n)
     return m;
 }
 
-int main()
-{
+int main() {
     sieve(1000000);
     int n;
     scanf("%d", &n);
