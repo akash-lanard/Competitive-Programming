@@ -1,24 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//vector is preferable
-vector<int> Prime;
-//int Prime[300000], nPrime;
-//1 if not prime, 0 if prime
-int mark[1000002];
+#define SIZE 1000002
 
-void sieve(int n)
-{
+vector<int> Prime; //Prime vector
+
+int mark[SIZE]; //1 if not prime, 0 if prime
+
+void sieve(int n) {
     int i, j, limit = sqrt(n*1.0) + 2;
-    //1 is not prime
-    mark[1] = 1;
-    //evens
-    for(i=4; i<=n; i+=2) mark[i] = 1;
 
-    //2 is prime
-    Prime.push_back(2);
-    //run loops only on odds
-    for(i=3; i<=n; i+=2) {
+    mark[1] = 1; //1 is not prime
+
+    for(i=4; i<=n; i+=2) mark[i] = 1; //evens
+
+    Prime.push_back(2); //2 is prime
+
+    for(i=3; i<=n; i+=2) { //run loops only on odds
         if(!mark[i]) {
             Prime.push_back(i);
 
@@ -32,6 +30,7 @@ void sieve(int n)
         }
     }
 }
+
 //n should be small
 map<int, int> primeFactNFact(int n)
 {
