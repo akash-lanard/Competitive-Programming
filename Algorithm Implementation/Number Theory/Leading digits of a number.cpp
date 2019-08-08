@@ -4,8 +4,7 @@ using namespace std;
 //if we need leading digits of n! or n^r
 //we can do it in the same method
 //or even with different base
-int leadDig(int n, int k)
-{
+int leadDig(int n, int k) {
     double x = (log(n)/log(10));
     double y = x - (int)x;
     long long res;
@@ -14,8 +13,7 @@ int leadDig(int n, int k)
     return res;
 }
 
-int main()
-{
+int main() {
     int n, k;
     scanf("%d %d", &n, &k);
     cout << leadDig(n, k) << endl;
