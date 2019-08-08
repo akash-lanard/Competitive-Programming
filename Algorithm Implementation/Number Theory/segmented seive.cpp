@@ -67,7 +67,6 @@ void segmentedSieve(LL n) {
 }
 
 int main() {
-
     segmentedSieve(1000);
 
     for(int i=0; i<Prime.size(); i++) {
