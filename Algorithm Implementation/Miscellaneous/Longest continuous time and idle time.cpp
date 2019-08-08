@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
+int main() {
     int n;
     scanf("%d", &n);
     vector<pair<int, int> > v;
