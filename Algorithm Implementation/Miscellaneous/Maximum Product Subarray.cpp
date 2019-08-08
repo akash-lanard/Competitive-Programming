@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int maxProduct(int ara[], int n)
-{
+int maxProduct(int ara[], int n) {
     int max_so_far = INT_MIN;
     int max_ending_here = ara[0];
     int min_ending_here = ara[0];
@@ -28,8 +27,7 @@ int maxProduct(int ara[], int n)
     return max_so_far;
 }
 
-int main()
-{
+int main() {
     int arr[] = {-1,-3,-4}; // expected 12
 	int n =  sizeof(arr)/sizeof(arr[0]);
 	cout << "res = ";
