@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL)
-
 #define LL long long
 
 LL O[35]; // Number of 1's in binary representation of 0 to 2^n-1
@@ -46,24 +44,7 @@ LL numOf1s(LL N) { // Number of 1's in binary representation of 0 to N
 }
 
 int main () {
-    #ifdef forthright48
-    //freopen ( "input.txt", "r", stdin );
-    //freopen ( "output.txt", "w", stdout );
-    #endif // forthright48
-
-    fast_cin;
-
     pre();
-
-//    cout << "O contains:\n";
-//    for(int i=0; i<=32; i++) {
-//        cout << "i = " << i << ", O = " << O[i] << endl;
-//    }
-//
-//    cout << "V contains:\n";
-//    for(int i=0; i<=32; i++) {
-//        cout << "i = " << i << ", V = " << V[i] << endl;
-//    }
 
     LL a, b;
     cin >> a >> b;
