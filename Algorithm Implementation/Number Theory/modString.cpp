@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int modString(string num, int m)
-{
+int modString(string num, int m) {
     int res = 0;
     for(int i=0; i<num.size(); i++) {
         res = (res*10 + (int)num[i] - '0') % m;
@@ -10,8 +9,7 @@ int modString(string num, int m)
     return res;
 }
 
-int main()
-{
+int main() {
     while(1) {
         string str;
         cin >> str;
