@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int numOfDiv(int n)
-{
+int numOfDiv(int n) {
     int cnt = 0, sq = sqrt(n);
     for(int i=1; i<=sq; i++) {
         if(n%i==0) {
