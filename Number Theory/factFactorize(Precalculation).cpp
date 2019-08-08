@@ -1,23 +1,19 @@
-#define SIZE 1000005
+#define SIZE 1000002
 
-//vector is preferable
-vector<int> Prime;
-//int Prime[300000], nPrime;
-//1 if not prime, 0 if prime
-int mark[SIZE];
+vector<int> Prime; //Prime vector
 
-void sieve(int n)
-{
+int mark[SIZE]; //1 if not prime, 0 if prime
+
+void sieve(int n) {
     int i, j, limit = sqrt(n*1.0) + 2;
-    //1 is not prime
-    mark[1] = 1;
-    //evens
-    for(i=4; i<=n; i+=2) mark[i] = 1;
 
-    //2 is prime
-    Prime.push_back(2);
-    //run loops only on odds
-    for(i=3; i<=n; i+=2) {
+    mark[1] = 1; //1 is not prime
+
+    for(i=4; i<=n; i+=2) mark[i] = 1; //evens
+
+    Prime.push_back(2); //2 is prime
+
+    for(i=3; i<=n; i+=2) { //run loops only on odds
         if(!mark[i]) {
             Prime.push_back(i);
 
