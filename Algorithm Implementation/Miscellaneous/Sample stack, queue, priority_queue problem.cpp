@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
+int main() {
     int n;
     while(scanf("%d", &n)!=EOF) {
         int flag_s=1, flag_q=1, flag_pq=1;
