@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
+int main() {
     int p[10], N = 10;
     for(int i=0; i<N; i++) {
         p[i] = i;
