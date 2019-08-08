@@ -6,8 +6,7 @@ using namespace std;
 #define R 4
 #define C 4
 
-int maxHist(int row[])
-{
+int maxHist(int row[]) {
     stack<int> result;
     int top_val;
     int max_area = 0;
@@ -38,8 +37,7 @@ int maxHist(int row[])
     return max_area;
 }
 
-int maxRectangle(int A[][C])
-{
+int maxRectangle(int A[][C]) {
     int result = maxHist(A[0]);
     for(int i=1; i<R; i++) {
         for(int j=0; j<C; j++) {
@@ -50,8 +48,7 @@ int maxRectangle(int A[][C])
     return result;
 }
 
-int main()
-{
+int main() {
     int A[R][C] { {0, 1, 1, 0},
                  {1, 1, 1, 1},
                  {1, 1, 1, 1},
