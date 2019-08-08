@@ -1,2 +1,2 @@
 # Competitive Programming
-# Algorithm Implementation
+## Algorithm Implementation
