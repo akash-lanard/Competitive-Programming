@@ -1,4 +1,3 @@
-
 // C++ program for modular multiplication without any overflow 
 #include<iostream> 
 using namespace std; 
