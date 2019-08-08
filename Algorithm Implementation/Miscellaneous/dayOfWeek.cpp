@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int isleap(int y)
-{
+int isleap(int y) {
     return y%4==0 && (y%100 != 0 || y%400 == 0);
 }
 
-int dayOfWeek(int year, int month, int day)
-{
+int dayOfWeek(int year, int month, int day) {
     int init_y, init_m = 1, init_d = 1, init_DOW = 3, cnt=0;
 
     for(init_y=1 ; init_y<year; init_y++) {
@@ -35,8 +33,7 @@ int dayOfWeek(int year, int month, int day)
     return ret;
 }
 
-int main()
-{
+int main() {
     cout << dayOfWeek(2010, 8, 9) << endl;
     return 0;
 }
