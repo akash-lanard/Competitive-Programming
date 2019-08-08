@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int bigmod(int a, int b, int M) //may require long long
-{                               //check input range
+int bigmod(int a, int b, int M)  {   //may require long long, check input range                      
     if(b==0) return 1%M;
     int x = bigmod(a, b/2, M);
     x = (x*x)%M;    //may overflow
@@ -10,8 +9,7 @@ int bigmod(int a, int b, int M) //may require long long
     return x;
 }
 
-int main()
-{
+int main() {
     int a, b, M;
     while(1) {
         cin >> a >> b >> M;
