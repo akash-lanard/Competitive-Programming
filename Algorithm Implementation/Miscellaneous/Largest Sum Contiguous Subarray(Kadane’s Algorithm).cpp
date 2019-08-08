@@ -2,8 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int maxSubArraySum(int a[], int size)
-{
+int maxSubArraySum(int a[], int size) {
    int max_so_far = a[0];
    int curr_max = a[0];
  
@@ -15,8 +14,7 @@ int maxSubArraySum(int a[], int size)
    return max_so_far;
 }
 
-int main()
-{
+int main() {
     int a[] = {-2, -3, 4, -1, -2, 1, 5, -3};
     int n = sizeof(a)/sizeof(a[0]);
     int max_sum = maxSubArraySum(a, n);
