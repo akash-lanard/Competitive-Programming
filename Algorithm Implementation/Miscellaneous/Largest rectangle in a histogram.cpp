@@ -1,3 +1,5 @@
+// Reference: https://www.geeksforgeeks.org/largest-rectangle-under-histogram/
+
 #include <bits/stdc++.h>
 using namespace std;
 
