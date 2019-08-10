@@ -7,8 +7,7 @@ using namespace std;
 vector<int> G[SIZE];
 int level[SIZE];
 
-void BFS(int source)
-{
+void BFS(int source) {
     queue<int> Q;
     for(int i=0; i<SIZE; i++) level[i] = BIG;
 
@@ -30,13 +29,11 @@ void BFS(int source)
     return;
 }
 
-void clr()
-{
+void clr() {
     for(int i=0; i<SIZE; i++) G[i].clear();
 }
 
-int main()
-{
+int main() {
     G[1].push_back(2);
     G[1].push_back(4);
     G[1].push_back(3);
