@@ -23,7 +23,7 @@ using namespace std;
 
 vector<int> G[SIZE];
 
-int N;
+int n, m;               // number of node, number of edges
 
 int visited[SIZE];      // visited arrray
 int recStack[SIZE];     // recursion stack (1 if it is in the recursion stack)
@@ -52,7 +52,7 @@ bool isCyclicDir() {
     memset(visited, 0, sizeof(visited));
     memset(recStack, 0, sizeof(recStack));
 
-    for(int i=0; i<N; i++) {
+    for(int i=0; i<n; i++) {
         if(isCyclicDirUtil(i)) {    // check for all the nodes (handles for disconnected graph (DFS forest))
             return true;
         }
@@ -72,14 +72,12 @@ int main() {
 
     clr();
 
-    N = 4;
-
-    G[0].push_back(1);
-    G[0].push_back(2);
-    G[1].push_back(2);
-    G[2].push_back(0);
-    G[2].push_back(3);
-    G[3].push_back(3);
+    cin >> n >> m;
+    for(int i=0; i<m; i++) {
+        int u, v;
+        cin >> u >> v;
+        G[u].push_back(v);
+    }
 
     if(isCyclicDir()) {
         cout << "Graph contains cycle\n";
