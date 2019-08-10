@@ -1,6 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-
+// Reference: https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
 /*
 Depth First Traversal can be used to detect a cycle in a Graph.
 DFS for a connected graph produces a tree. There is a cycle in
@@ -18,14 +16,17 @@ in the recursion stack is a back edge. We have used recStack[] array to keep
 track of vertices in the recursion stack.
 */
 
+#include <bits/stdc++.h>
+using namespace std;
+
 #define SIZE 100005
 
 vector<int> G[SIZE];
 
 int N;
 
-int visited[SIZE];
-int recStack[SIZE];
+int visited[SIZE];      // visited arrray
+int recStack[SIZE];     // recursion stack (1 if it is in the recursion stack)
 
 bool isCyclicDirUtil(int curr) {
     if(!visited[curr]) {
@@ -35,10 +36,10 @@ bool isCyclicDirUtil(int curr) {
         for(int i=0; i<G[curr].size(); i++) {
             int next = G[curr][i];
 
-            if(!visited[next] && isCyclicDirUtil(next)) {
+            if(!visited[next] && isCyclicDirUtil(next)) {   // found a back edge in the child's subtree
                 return true;
             }
-            else if(recStack[next]) {
+            else if(recStack[next]) {   // if it is in the recursion stack, it found a back edge
                 return true;
             }
         }
@@ -52,7 +53,7 @@ bool isCyclicDir() {
     memset(recStack, 0, sizeof(recStack));
 
     for(int i=0; i<N; i++) {
-        if(isCyclicDirUtil(i)) {
+        if(isCyclicDirUtil(i)) {    // check for all the nodes (handles for disconnected graph)
             return true;
         }
     }
