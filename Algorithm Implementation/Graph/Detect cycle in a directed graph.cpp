@@ -53,7 +53,7 @@ bool isCyclicDir() {
     memset(recStack, 0, sizeof(recStack));
 
     for(int i=0; i<N; i++) {
-        if(isCyclicDirUtil(i)) {    // check for all the nodes (handles for disconnected graph)
+        if(isCyclicDirUtil(i)) {    // check for all the nodes (handles for disconnected graph (DFS forest))
             return true;
         }
     }
