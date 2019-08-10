@@ -5,29 +5,24 @@ using namespace std;
 
 int parent[SIZE];
 
-void makeset(int u)
-{
+void makeset(int u) {
     parent[u] = u;
 }
 
-void init_disjoint_set(int N)
-{
+void init_disjoint_set(int N) {
     for(int i=0; i<=N; i++) {
         makeset(i);
     }
 }
 
-/*int FindRepresentative(int r)   //without path compression
-{
+/*int FindRepresentative(int r) { //without path compression
     if(parent[r]==r) {
         return r;
     }
-
     return FindRepresentative(parent[r]);
 }*/
 
-int FindRepresentative(int r)   //with path compression
-{
+int FindRepresentative(int r) { //with path compression
     if(parent[r]==r) {
         return r;
     }
@@ -37,8 +32,7 @@ int FindRepresentative(int r)   //with path compression
     return parent[r];
 }
 
-void Union(int a, int b)
-{
+void Union(int a, int b) {
     int u = FindRepresentative(a);
     int v = FindRepresentative(b);
 
