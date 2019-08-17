@@ -8,3 +8,5 @@ joining the top of each tree to the foot of the opposite tree is given by (a*b)/
 If G is a planar graph having v vertices, e edges and f faces (regions divided in the plane by the graph),
 then: v - e + f = 2
 so f = e - v + 2.
+
+**Transpose graph (the same graph with the direction of every edge reversed) has exactly the same strongly connected components as the original graph
