@@ -1,5 +1,5 @@
-// Reference: https://www.geeksforgeeks.org/detect-cycle-in-an-undirected-graph-using-bfs/ 
-// almost similiar to DFS method, parent array is needed here
+/// Reference: https://www.geeksforgeeks.org/detect-cycle-in-an-undirected-graph-using-bfs/ 
+/// almost similiar to DFS method, parent array is needed here
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,33 +7,33 @@ using namespace std;
 #define SIZE 100005
 #define BIG 100000000
 
-int n, m;       // number of vertices and number of edges
+int n, m;       /// number of vertices and number of edges
 
-vector<int> G[SIZE];   // Graph
-int visited[SIZE];     // visited array instead of level (here distance is not an issue)
-int parent[SIZE];      // in BFS parents of each vertex need to be tracked
+vector<int> G[SIZE];   /// Graph
+int visited[SIZE];     /// visited array instead of level (here distance is not an issue)
+int parent[SIZE];      /// in BFS parents of each vertex need to be tracked
 
 queue<int> Q;
 
 bool BFS(int source) {
     while(!Q.empty()) Q.pop();
 
-    visited[source] = 1; // mark the source as visited
-    Q.push(source);      // push source node in queue
+    visited[source] = 1; /// mark the source as visited
+    Q.push(source);      /// push source node in queue
 
     while(!Q.empty()) {
-        int curr = Q.front();   // curr node in the front of the queue, pop it
+        int curr = Q.front();   /// curr node in the front of the queue, pop it
         Q.pop();
 
         for(int i = 0; i<G[curr].size(); i++) {
             int next = G[curr][i];
-            if(!visited[next]) {    // if next node is not updated update it
-                visited[next] = 1;  // next node is visited
-                Q.push(next);       // push next in the queue
+            if(!visited[next]) {    /// if next node is not updated update it
+                visited[next] = 1;  /// next node is visited
+                Q.push(next);       /// push next in the queue
                 parent[next] = curr;// parent of next is updated
             }
             else if(next!=parent[curr]) {
-                return true;        // if next is visited but it is not parent of curr than cycle exists
+                return true;        /// if next is visited but it is not parent of curr than cycle exists
             }
         }
     }
@@ -44,7 +44,7 @@ bool isCyclic() {
     memset(visited, 0, sizeof(visited));
     memset(parent, -1, sizeof(parent));
 
-    for(int i=0; i<n; i++) { // change here if vertices are 1 indexed
+    for(int i=0; i<n; i++) { /// change here if vertices are 1 indexed
         if(!visited[i] && BFS(i)) {
             return true;
         }
