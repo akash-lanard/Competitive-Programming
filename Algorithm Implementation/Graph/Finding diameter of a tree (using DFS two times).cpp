@@ -1,8 +1,9 @@
-// Reference: https://www.geeksforgeeks.org/diameter-tree-using-dfs/
-/*Same idea as bfs approach
-We choose an arbitrary node (x) and find the farthest node from (x), let it be (y) (first dfs)
-then we do another traversal to find the farthest node from (y) , let it be (z).   (second dfs)
-Then diameter is the distance between (y) and (z)*/
+/// Reference: https://www.geeksforgeeks.org/diameter-tree-using-dfs/
+/// Same idea as bfs approach
+/// We choose an arbitrary node (x) and find the farthest node from (x), let it be (y) (first dfs)
+/// then we do another traversal to find the farthest node from (y) , let it be (z).   (second dfs)
+/// Then diameter is the distance between (y) and (z)
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -10,14 +11,14 @@ typedef pair<int, int> pii;
 
 #define SIZE 100005
 
-vector<int> G[SIZE];    // graph
+vector<int> G[SIZE];    /// graph
 
-int visited[SIZE];      // visited array
+int visited[SIZE];      /// visited array
 
-int n;                  // number of nodes
+int n;                  /// number of nodes
 
-int mxCnt;              // global variable to determine diameter
-int fn;                 // global variable to determine farthest node
+int mxCnt;              /// global variable to determine diameter
+int fn;                 /// global variable to determine farthest node
 
 void dfs(int curr, int cnt) {
     visited[curr] = 1;
@@ -39,12 +40,12 @@ int findDiameter() {
     mxCnt = 0;
 
     memset(visited, 0, sizeof(visited));
-    dfs(1, 0);  // first bfs from a random node (here it is 1)
+    dfs(1, 0);  /// first bfs from a random node (here it is 1)
 
     memset(visited, 0, sizeof(visited));
-    dfs(fn, 0); // second bfs from fn
+    dfs(fn, 0); /// second bfs from fn
 
-    return mxCnt;   // mxCnt is the diameter
+    return mxCnt;   /// mxCnt is the diameter
 }
 
 int main() {
