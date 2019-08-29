@@ -1,7 +1,8 @@
-// Reference: https://www.quora.com/How-do-I-find-the-diameter-of-a-tree
-/*We choose an arbitrary node (x) and find the farthest node from (x), let it be (y) (first bfs)
-then we do another traversal to find the farthest node from (y) , let it be (z).     (second bfs)
-Then diameter is the distance between (y) and (z).*/
+/// Reference: https://www.quora.com/How-do-I-find-the-diameter-of-a-tree
+/// We choose an arbitrary node (x) and find the farthest node from (x), let it be (y) (first bfs)
+/// then we do another traversal to find the farthest node from (y) , let it be (z).     (second bfs)
+/// Then diameter is the distance between (y) and (z).
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,11 +10,11 @@ typedef pair<int, int> pii;
 
 #define SIZE 100005
 
-vector<int> G[SIZE];    // graph
+vector<int> G[SIZE];    /// graph
 
-int dist[SIZE];         // distance array (number of nodes in the path from root)
+int dist[SIZE];         /// distance array (number of nodes in the path from root)
 
-int n;                  // number of nodes
+int n;                  /// number of nodes
 
 queue<int> Q;
 
@@ -44,13 +45,13 @@ pii bfs(int root) {
         }
     }
 
-    return pii(mx, mxVertex);  // return the number of nodes in the max path and the farthest node
+    return pii(mx, mxVertex);  /// return the number of nodes in the max path and the farthest node
 }
 
 int findDiameter(int root) {
     pii p1, p2;
-    p1 = bfs(root); // bfs from root, p1.second is the farthest node from root
-    p2 = bfs(p1.second); // bfs from p1.second, p2.first is the diameter of the tree.
+    p1 = bfs(root); /// bfs from root, p1.second is the farthest node from root
+    p2 = bfs(p1.second); /// bfs from p1.second, p2.first is the diameter of the tree.
 
     return p2.first;
 }
