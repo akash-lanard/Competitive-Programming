@@ -1,20 +1,19 @@
-// Reference: https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
-/*
-Depth First Traversal can be used to detect a cycle in a Graph.
-DFS for a connected graph produces a tree. There is a cycle in
-a graph only if there is a back edge present in the graph.
-A back edge is an edge that is from a node to itself (self-loop)
-or one of its ancestor in the tree produced by DFS.
+/// Reference: https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
 
-For a disconnected graph, we get the DFS forest as output.
-To detect cycle, we can check for a cycle in individual trees by checking back edges.
+/// Depth First Traversal can be used to detect a cycle in a Graph.
+/// DFS for a connected graph produces a tree. There is a cycle in
+/// a graph only if there is a back edge present in the graph.
+/// A back edge is an edge that is from a node to itself (self-loop)
+/// or one of its ancestor in the tree produced by DFS.
 
-To detect a back edge, we can keep track of vertices currently in recursion stack
-of function for DFS traversal. If we reach a vertex that is already in the recursion stack,
-then there is a cycle in the tree. The edge that connects current vertex to the vertex
-in the recursion stack is a back edge. We have used recStack[] array to keep
-track of vertices in the recursion stack.
-*/
+/// For a disconnected graph, we get the DFS forest as output.
+/// To detect cycle, we can check for a cycle in individual trees by checking back edges.
+
+/// To detect a back edge, we can keep track of vertices currently in recursion stack
+/// of function for DFS traversal. If we reach a vertex that is already in the recursion stack,
+/// then there is a cycle in the tree. The edge that connects current vertex to the vertex
+/// in the recursion stack is a back edge. We have used recStack[] array to keep
+/// track of vertices in the recursion stack.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,10 +22,10 @@ using namespace std;
 
 vector<int> G[SIZE];
 
-int n, m;               // number of node, number of edges
+int n, m;               /// number of node, number of edges
 
-int visited[SIZE];      // visited arrray
-int recStack[SIZE];     // recursion stack (1 if it is in the recursion stack)
+int visited[SIZE];      /// visited arrray
+int recStack[SIZE];     /// recursion stack (1 if it is in the recursion stack)
 
 bool isCyclicDirUtil(int curr) {
     if(!visited[curr]) {
@@ -36,10 +35,10 @@ bool isCyclicDirUtil(int curr) {
         for(int i=0; i<G[curr].size(); i++) {
             int next = G[curr][i];
 
-            if(!visited[next] && isCyclicDirUtil(next)) {   // found a back edge in the child's subtree
+            if(!visited[next] && isCyclicDirUtil(next)) {   /// found a back edge in the child's subtree
                 return true;
             }
-            else if(recStack[next]) {   // if it is in the recursion stack, it found a back edge
+            else if(recStack[next]) {   /// if it is in the recursion stack, it found a back edge
                 return true;
             }
         }
@@ -53,7 +52,7 @@ bool isCyclicDir() {
     memset(recStack, 0, sizeof(recStack));
 
     for(int i=0; i<n; i++) {
-        if(isCyclicDirUtil(i)) {    // check for all the nodes (handles for disconnected graph (DFS forest))
+        if(isCyclicDirUtil(i)) {    /// check for all the nodes (handles for disconnected graph (DFS forest))
             return true;
         }
     }
