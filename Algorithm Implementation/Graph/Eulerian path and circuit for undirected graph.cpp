@@ -38,7 +38,7 @@ bool isConnected() {
 
     for(i=0; i<V; i++) {                /// 0 indexed
         if(!visited[i] && G[i].size()>0) {
-            return false;               // Check if all non-zero degree vertices are visited
+            return false;               /// Check if all non-zero degree vertices are visited
         }
     }
 
