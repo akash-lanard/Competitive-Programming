@@ -4,27 +4,27 @@ using namespace std;
 #define SIZE 1005
 #define BIG 100000000
 
-vector<int> G[SIZE];    // Graph
-int level[SIZE];        // level of the nodes (distance, as the graph is unweighted)
+vector<int> G[SIZE];    /// Graph
+int level[SIZE];        /// level of the nodes (distance, as the graph is unweighted)
 
 queue<int> Q;
 void BFS(int source) {
     while(!Q.empty()) Q.pop();
 
-    for(int i=0; i<SIZE; i++) level[i] = BIG; // initially the distance is inf (it is also used as visited)
+    for(int i=0; i<SIZE; i++) level[i] = BIG; /// initially the distance is inf (it is also used as visited)
 
-    Q.push(source);     // push source node in queue
-    level[source] = 0;  // level of source node is 0
+    Q.push(source);     /// push source node in queue
+    level[source] = 0;  /// level of source node is 0
 
     while(!Q.empty()) {
-        int curr = Q.front();   // curr node in the front of the queue, pop it
+        int curr = Q.front();   /// curr node in the front of the queue, pop it
         Q.pop();
 
         for(int i = 0; i<G[curr].size(); i++) {
             int next = G[curr][i];
-            if(level[next] == BIG) {    // if next node is not updated update it
-                level[next] = level[curr] + 1;  // update level of next node
-                Q.push(next);                   // push next in the queue
+            if(level[next] == BIG) {    /// if next node is not updated update it
+                level[next] = level[curr] + 1;  /// update level of next node
+                Q.push(next);                   /// push next in the queue
             }
         }
     }
