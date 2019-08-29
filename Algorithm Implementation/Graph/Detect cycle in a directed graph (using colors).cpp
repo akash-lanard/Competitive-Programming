@@ -1,4 +1,4 @@
-// Reference: https://www.geeksforgeeks.org/detect-cycle-direct-graph-using-colors
+/// Reference: https://www.geeksforgeeks.org/detect-cycle-direct-graph-using-colors
 
 /// Same as DFS solution. This solution uses colors to find cycle (The solution is from CLRS book)
 /// The idea is to do DFS of given graph and while doing traversal, assign one of the below three colors to every vertex
