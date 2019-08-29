@@ -1,5 +1,6 @@
 /// Reference: https://www.geeksforgeeks.org/fleurys-algorithm-for-printing-eulerian-path/
 /// Time Complexity: O((V+E)^2)
+/// Note: It assumes that the graph has an euler path or cycle
 
 #include <bits/stdc++.h>
 using namespace std;
