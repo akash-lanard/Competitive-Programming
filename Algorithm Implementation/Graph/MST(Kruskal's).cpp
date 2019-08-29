@@ -45,7 +45,7 @@ void init_disjoint_set(int N)
     }
 }
 
-/*int FindRepresentative(int r)   //without path compression
+/*int FindRepresentative(int r)   /// without path compression
 {
     if(parent[r]==r) {
         return r;
@@ -53,7 +53,7 @@ void init_disjoint_set(int N)
     return FindRepresentative(parent[r]);
 }*/
 
-int FindRepresentative(int r)   //with path compression
+int FindRepresentative(int r)   /// with path compression
 {
     if(parent[r]==r) {
         return r;
