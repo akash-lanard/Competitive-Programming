@@ -1,22 +1,22 @@
-// Reference: https://www.quora.com/How-do-I-find-the-diameter-of-a-tree
+/// Reference: https://www.quora.com/How-do-I-find-the-diameter-of-a-tree
 
 #include <bits/stdc++.h>
 using namespace std;
 
 #define SIZE 100005
 
-vector<int> G[SIZE];    // graph
+vector<int> G[SIZE];    /// graph
 
-int h[SIZE];        // height array
+int h[SIZE];        /// height array
 
-int n;       // number of node
+int n;       /// number of node
 
-// finding height of each node
-int findHeight(int curr, int p) { // current node and its parent
+/// finding height of each node
+int findHeight(int curr, int p) { /// current node and its parent
     for(int i=0; i<G[curr].size(); i++) {
         int next = G[curr][i];
-        if(next==p) continue; // height of the current node is the maximum height
-                              // among its children + 1
+        if(next==p) continue; /// height of the current node is the maximum height
+                              /// among its children + 1
         h[curr] = max(h[curr], findHeight(next, curr));
     }
 
@@ -25,15 +25,15 @@ int findHeight(int curr, int p) { // current node and its parent
     return h[curr];
 }
 
-// finding diameter of a tree
-// 1. Diameter may passes through the current node (mx1 + mx2 + 1)
-// 2. Diameter may be present in any subtree of the current node's children. (mx_subtree)
+/// finding diameter of a tree
+/// 1. Diameter may passes through the current node (mx1 + mx2 + 1)
+/// 2. Diameter may be present in any subtree of the current node's children. (mx_subtree)
 int findDiameter(int curr, int p) {
     int mx1, mx2, mx_subtree;
     mx1 = mx2 = mx_subtree = 0;
 
     for(int i=0; i<G[curr].size(); i++) {
-        int next = G[curr][i];      // determining 1st max and 2nd max heights
+        int next = G[curr][i];      /// determining 1st max and 2nd max heights
         if(next==p) continue;
 
         if(h[next]>mx1) {
@@ -46,13 +46,13 @@ int findDiameter(int curr, int p) {
     }
 
     for(int i=0; i<G[curr].size(); i++) {
-        int next = G[curr][i];      // determining mx_subtree
+        int next = G[curr][i];      /// determining mx_subtree
         if(next==p) continue;
 
         mx_subtree = max(mx_subtree, findDiameter(next, curr));
     }
 
-    return max(mx_subtree, mx1+mx2+1); // return maximum of the 2 cases
+    return max(mx_subtree, mx1+mx2+1); /// return maximum of the 2 cases
 }
 
 int main() {
@@ -66,8 +66,8 @@ int main() {
         G[v].push_back(u);
     }
 
-    findHeight(1, -1);                      // 1 based
-    cout << findDiameter(1, -1) << "\n";    // 1 based
+    findHeight(1, -1);                      /// 1 indexed
+    cout << findDiameter(1, -1) << "\n";    /// 1 indexed
 
     return 0;
 }
