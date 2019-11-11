@@ -22,7 +22,7 @@ int main () {
 
         LL g = gcd ( A, B );
 
-        LL k = 1; //Use different value of k to get different solutions
+        LL k = 1;               /// Use different value of k to get different solutions
         printf ( "Another Possible Solution (%lld %ld)\n", x + k * ( B / g ), y - k * ( A / g ) );
     }
 
