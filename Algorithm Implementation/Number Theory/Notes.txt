@@ -2,9 +2,18 @@
 Amount of palindrome numbers with fixed length k — it is about 10^((k+1)/2).
 Therefore the number of primes asymptotically bigger than the number of palindromic numbers.
 
-**For every Pythagorean triplet a > 3 and a + b + c is even
-
 **F(n)=4*F(n-3)+F(n-6)  where, F(n) = nth fibonacci number
 
 **All primes greater than 3 can be written in the form 6k+1 or 6k-1.
 **Any number n can have only one primefactor greater than sqrt(n)
+
+**For every Pythagorean triplet a > 3 and a + b + c is even
+
+**A Pythagorean triplet (a, b, c) is by definition primitive if a, b, c are pairwise co-prime
+**All primitive Pythagorean triplets can be represented as a = (m^2) − (n^2), b = 2*m*n, c = (m^2) + (n^2)
+with m > n > 0, perhaps exchanging a and b to have a < b. These formulae
+always produce a Pythagorean triplet, but it will be primitive if and only if
+exactly one of m, n is even and other is odd and gcd(m, n) = 1
+**From any Pythagorean triplet you get a primitive one by dividing out the greatest
+common divisor, so every Pythagorean triplet has a unique representation a = ((m^2) − (n^2))*d, b = 2*m*n*d, c = ((m^2) + (n^2))*d
+with m > n > 0, gcd(m, n) = 1 and exactly one of m, n even and d is the gcd of a, b and c
