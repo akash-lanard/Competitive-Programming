@@ -1,3 +1,10 @@
-Amount of prime numbers non greater than n is about n/log(n).
+**Amount of prime numbers non greater than n is about n/log(n).
 Amount of palindrome numbers with fixed length k — it is about 10^((k+1)/2).
 Therefore the number of primes asymptotically bigger than the number of palindromic numbers.
+
+**For every Pythagorean triplet a > 3 and a + b + c is even
+
+**F(n)=4*F(n-3)+F(n-6)  where, F(n) = nth fibonacci number
+
+**All primes greater than 3 can be written in the form 6k+1 or 6k-1.
+**Any number n can have only one primefactor greater than sqrt(n)
