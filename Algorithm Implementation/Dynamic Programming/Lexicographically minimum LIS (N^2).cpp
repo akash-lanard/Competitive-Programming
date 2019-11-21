@@ -81,8 +81,8 @@ int main () {
 
     clr();          /// clear dp and dir array
 
-    cin >> n;       /// length of string
     cin >> S;       /// given string
+    n = S.size();   /// length of string
 
     pre();
     pis ret = LIS();  /// first = lex min LIS length, second = lex min LIS string
