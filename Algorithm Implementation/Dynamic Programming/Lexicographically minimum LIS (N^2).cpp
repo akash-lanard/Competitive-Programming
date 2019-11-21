@@ -4,7 +4,6 @@ using namespace std;
 #define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL)
 #define ff first
 #define ss second
-typedef pair<int, int> pii;
 typedef pair<int, string> pis;
 
 #define SIZE 105/// change SIZE if needed (won't work for big value tho)
