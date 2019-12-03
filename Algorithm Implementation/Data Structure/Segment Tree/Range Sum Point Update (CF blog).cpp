@@ -35,7 +35,7 @@ void build(int id = 1, int l = 0, int r = N) {
 
 /// Update function to modify the elements. Call modify(p, x)
 void modify(int p, int x, int id = 1, int l = 0, int r = N) {
-    S[id] += (x - A[id]);               /// Update current node's sum
+    S[id] += (x - A[p]);               /// Update current node's sum
     if(r-l<2) {
         A[p] = x;                       /// Reached at the leaf node
         return;
@@ -53,7 +53,7 @@ void modify(int p, int x, int id = 1, int l = 0, int r = N) {
 /// Query function for getting the range sum. Call sum(l, r) [Note: r is not included in the sum]
 int sum(int x, int y, int id = 1, int l = 0, int r = N) {
     if(r<=x || y<=l) return 0;          /// Completely outside
-    if(x<=l && r<=y) return S[id];      /// Completyly inside
+    if(x<=l && r<=y) return S[id];      /// Completely inside
     int mid = (l+r)/2;                  /// Split into 2 segments
     return sum(x, y, 2*id, l, mid) + sum(x, y, 2*id+1, mid, r); /// Get sum from both child
 }
