@@ -12,7 +12,7 @@ using namespace std;
 /// S[l, r) = S[l, mid) + S[mid, r)
 /// Range sum point update
 /// 2 types of queries:
-/// 1. S l r: Sum in range from l to r
+/// 1. S l r: Sum in range from l to r [Note: r is not included]
 /// 2. M p x: Modify the value of index-p to x
 
 int N;          /// Number of elements
