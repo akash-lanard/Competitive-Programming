@@ -13,14 +13,14 @@ int N; /// Number of elements
 int fen[SIZE];
 
 void update(int p, int val) { /// update value to val at position p (1-indexed)
-    for(int i=p; i<=N; i += i&-i) {
+    for(int i=p; i<=N; i += i&-i) { ///i + (i AND 1's complement of i)
         fen[i] += val;
     }
 }
 
 int sum(int p) { /// prefix sum(1-p) at position p (1-indexed)
     int ans = 0;
-    for(int i=p; i; i -= i&-i) {
+    for(int i=p; i; i -= i&-i) { ///i - (i AND 1's complement of i)
         ans += fen[i];
     }
     return ans;
@@ -42,3 +42,4 @@ int main () {
 
     return 0;
 }
+
