@@ -1,21 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define SIZE 2005
-
-int color[SIZE];
+#define SIZE 100005
 
 vector<int> G[SIZE];
-
-vector<pair<int, int> > myvec;
-
+int color[SIZE];
 int color1cnt, color2cnt;
+queue<int> Q;
 
-bool Bicoloring(int source)
-{
-    queue<int> Q;
+bool Bicoloring(int source) {
+    while(!Q.empty()) Q.pop();
     Q.push(source);
 
+    memset(color, 0, sizeof(color));
     color1cnt = 0;
     color2cnt = 0;
 
@@ -44,12 +41,10 @@ bool Bicoloring(int source)
         }
     }
 
-    myvec.push_back(pair<int, int>(color1cnt, color2cnt));
     return true;
 }
 
-void clr()
-{
+void clr() {
     for(int i=0; i<SIZE; i++) G[i].clear();
 }
 
