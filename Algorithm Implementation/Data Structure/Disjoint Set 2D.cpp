@@ -1,8 +1,7 @@
 #define SIZE 1005
 
 int row, col;
-int mat[SIZE][SIZE], U[SIZE][SIZE], D[SIZE][SIZE], L[SIZE][SIZE], R[SIZE][SIZE];
-
+int mat[SIZE][SIZE];
 pii parent[SIZE][SIZE];
 int sz[SIZE][SIZE];
 
