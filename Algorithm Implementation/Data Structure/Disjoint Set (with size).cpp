@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define SIZE 150005
+#define SIZE 100005
 
 int parent[SIZE];
 int sz[SIZE];
@@ -36,8 +36,14 @@ void Union(int a, int b) {
     int v = FindRepresentative(b);
 
     if(u!=v) {
-        parent[u] = v;
-        sz[v] += sz[u];
+        if(sz[v]>=sz[u]) {
+            parent[u] = v;
+            sz[v] += sz[u];
+        }
+        else {
+           parent[v] = u;
+            sz[u] += sz[v];
+        }
     }
 }
 
