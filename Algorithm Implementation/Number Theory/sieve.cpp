@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define SIZE 1000002
+#define SIZE 1000005
 
 vector<int> Prime; //Prime vector
 
