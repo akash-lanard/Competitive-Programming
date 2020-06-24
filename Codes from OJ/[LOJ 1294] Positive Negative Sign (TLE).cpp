@@ -1,5 +1,5 @@
 /// Verdict: TLE
-/// Brute-force won't work. There is a pattern
+/// Brute-force won't work. There is a pattern.
 
 #include <bits/stdc++.h>
 using namespace std;
