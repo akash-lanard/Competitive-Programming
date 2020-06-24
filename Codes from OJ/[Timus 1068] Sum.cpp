@@ -1,4 +1,4 @@
-///Verdict: AC
+/// Verdict: AC
 
 #include <bits/stdc++.h>
 using namespace std;
