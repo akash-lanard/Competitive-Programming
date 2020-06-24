@@ -1,4 +1,4 @@
-///Verdict: AC
+/// Verdict: AC
 
 #include <iostream>
 using namespace std;
