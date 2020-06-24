@@ -1,4 +1,4 @@
-///Verdict: AC
+/// Verdict: AC
 
 #include<stdio.h>
 int main()
