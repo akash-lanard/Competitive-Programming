@@ -1,4 +1,4 @@
-///Verdict: WA
+/// Verdict: WA
 /// DON'T USE FLOAT
 
 #include <stdio.h>
