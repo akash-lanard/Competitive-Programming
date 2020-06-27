@@ -1,106 +1,36 @@
-#include <bits/stdc++.h>
-using namespace std;
+#define ff first
+#define ss second
+#define LL long long                    /// Note: 0-indexed
+typedef pair < int, int > pii;          /// dis[node] = inf (cannot reach), dis[node] = -inf (in a neg. cycle)
+const LL inf = 2147383647;              /// Modify if needed
 
-#define SIZE 1005
-#define BIG 1000000000000005
+#define SIZE 205                        /// Modify size accordingly
 
-long long dis[SIZE];
-int pre[SIZE];
+LL N, M, dis[SIZE], cost_uv[200005];    /// num. of nodes, num. of edges, distance array, cost of edges (modify size if needed)
+vector<pii> edgeVec;                    /// Edge vector (can also use struct including the edge costs)
 
-int n;
-
-vector<pair<int, int> > G[SIZE];
-
-bool bellmanFord(int source)
-{
-    for(int i=0; i<SIZE; i++) {
-        dis[i] = BIG;
-        pre[i] = -1;
+void bellmanFord(int src) {
+    for(int i=0; i<N; i++) {
+        dis[i] = inf;                   /// initially inf
     }
 
-    dis[source] = 0;
-
-    for(int i=1; i<=n-1; i++) {
-        for(int j=1; j<=n; j++) {
-            for(int k=0; k<G[j].size(); k++) {
-                int currID = G[j][k].first;
-                int currCost = G[j][k].second;
-
-                if(dis[j] + currCost < dis[currID]) {
-                    dis[currID] = dis[j] + currCost;
-
-                    pre[currID] = j;
-                }
+    dis[src] = 0;                       /// dist. of src
+    for(int i=0; i<N-1; i++) {          /// Relax N-1 times
+        bool upd = false;
+        for(int j=0; j<M; j++) {        /// all the edges
+            int u = edgeVec[j].ff, v = edgeVec[j].ss;
+            if(dis[u]!=inf && dis[u]+cost_uv[j]<dis[v]) {
+                dis[v] = dis[u] + cost_uv[j];
+                upd = true;             /// update is done
             }
         }
+        if(!upd) break;                 /// break if no update
     }
 
-    for(int j=1; j<=n; j++) {
-        for(int k=0; k<G[j].size(); k++) {
-            int currID = G[j][k].first;
-            int currCost = G[j][k].second;
-
-            if(dis[j] + currCost < dis[currID]) {
-                return false;
-            }
+    for(int i=0; i<M; i++) {            /// check if the node is in a negative cycle
+        int u = edgeVec[i].ff, v = edgeVec[i].ss;
+        if(dis[u]!=inf && dis[u]+cost_uv[i]<dis[v]) {
+            dis[v] = -inf;
         }
     }
-
-    return true;
-}
-
-void clr()
-{
-    for(int i=0; i<SIZE; i++) G[i].clear();
-}
-
-int main()
-{
-    #ifdef forthright48
-    freopen("input.txt", "r", stdin);
-    //freopen("output.txt", "w", stdout);
-    #endif // forthright48
-
-    clr();
-
-    int m;
-    scanf("%d %d", &n, &m);
-    for(int i=0; i<m; i++) {
-        int u, v, w;
-        scanf("%d %d %d", &u, &v, &w);
-        G[u].push_back(pair<int, int>(v, w));
-    }
-
-    if(bellmanFord(1)) {
-        for(int i=1; i<=n; i++) {
-            if(dis[i]!=BIG) printf("dis[%d] = %lld\n", i, dis[i]);
-            else printf("dis[%d] = inf\n", i);
-        }
-
-        for(int i=1; i<=n; i++) {
-            printf("Path of %d:", i);
-            if(dis[i]==BIG) {
-                printf(" invalid\n");
-            }
-            else {
-                vector<int> path;
-                int curr = i;
-                while(1) {
-                    path.push_back(curr);
-                    curr = pre[curr];
-                    if(curr==-1) break;
-                }
-
-                for(int j=path.size()-1; j>=0; j--) {
-                    printf(" %d", path[j]);
-                }
-                printf("\n");
-            }
-        }
-    }
-    else {
-        printf("Negative cycle detected\n");
-    }
-
-    return 0;
 }
