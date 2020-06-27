@@ -2,7 +2,7 @@
 #define ff first
 #define ss second
 #define LL long long                        /// Note: 0-indexed
-typedef pair < pair<LL, LL>, LL> plll;      /// dis[node] = inf (cannot reach), dis[node] = -inf (in a neg. cycle)
+typedef pair < pair<LL, LL>, LL> plll;      /// dis[node] = inf (cannot reach), dis[node] = -inf (a neg. cycle in the path from src to node)
 const LL inf = 1000000000000;               /// Modify if needed
 
 #define SIZE 200005                         /// Modify size accordingly
@@ -28,7 +28,7 @@ void bellmanFord(int src) {
         if(!upd) break;                     /// break if no update
     }
 
-    for(int i=0; i<M; i++) {                /// check if the node is in a negative cycle
+    for(int i=0; i<M; i++) {                /// check if there is any negative cycle in the path from src
         int u = edgeVec[i].ff.ff, v = edgeVec[i].ff.ss, cost = edgeVec[i].ss;
         if(dis[u]!=inf && dis[u]+cost<dis[v]) {
             dis[v] = -inf;
