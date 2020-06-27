@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 #define MP make_pair
 #define ff first
 #define ss second
