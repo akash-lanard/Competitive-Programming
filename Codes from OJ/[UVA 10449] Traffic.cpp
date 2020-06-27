@@ -22,7 +22,7 @@ void bellmanFord(int src) {
         dis[i] = inf;
     }
 
-    dis[0] = 0;
+    dis[src] = 0;
     for(int i=0; i<N-1; i++) {
         bool upd = false;
         for(int j=0; j<M; j++) {
