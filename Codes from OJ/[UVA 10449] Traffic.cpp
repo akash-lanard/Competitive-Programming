@@ -15,8 +15,8 @@ const LL inf = 1000000000000;               /// Modify if needed
 
 int ks;
 LL buzzy[SIZE];                             /// buzziness is increased at night ;)
-LL N, M, dis[SIZE];                         /// num. of nodes, num. of edges, distance array, cost of edges
-vector<plll> edgeVec;                       /// Edge vector
+LL N, M, dis[SIZE];                         /// num. of nodes, num. of edges, distance array
+vector<plll> edgeVec;                       /// Edge vector (src, dest, cost)
 
 void bellmanFord(int src) {
     for(int i=0; i<N; i++) {
