@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define endl "\n"
 #define pb push_back
 #define MP make_pair
 #define ff first
@@ -10,8 +11,8 @@ using namespace std;
 #define FABS(x) ((x)+eps<0?-(x):(x))
 #define LCM(x,y) (((x)/gcd((x),(y)))*(y))
 #define POPCOUNT __builtin_popcountll
-#define Set(N,p) N=((N)|((1LL)<<(p)))
-#define Reset(N,p) N=((N)&(~((1LL)<<(p))))
+#define Set(N,p) ((N)|((1LL)<<(p)))
+#define Reset(N,p) ((N)&(~((1LL)<<(p))))
 #define Check(N,p) (!(((N)&((1LL)<<(p)))==(0)))
 #define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL)
 
