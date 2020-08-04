@@ -2,9 +2,6 @@
 using namespace std;
 
 #define LL long long
-typedef long long vlong;
-
-//typedef tree <int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pb_ds;
 
 LL mulmod ( LL a, LL b, LL m ) {
     if ( a < b ) swap ( a, b );
@@ -21,8 +18,8 @@ LL mulmod ( LL a, LL b, LL m ) {
      return res % m;
 }
 
-inline vlong bigmod ( vlong a, vlong p, vlong m ) {
-    vlong res = 1 % m, x = a % m;
+inline LL bigmod ( LL a, LL p, LL m ) {
+    LL res = 1 % m, x = a % m;
     while ( p ) {
         if ( p & 1 ) res = mulmod(res, x, m);
         x = mulmod(x, x, m); p >>= 1; /// For bigmod2 multiply here using mulmod
@@ -32,9 +29,9 @@ inline vlong bigmod ( vlong a, vlong p, vlong m ) {
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-bool millerTest(long long d, long long n) {
-    long long a = 2 + rng() % (n-4);
-    long long x = bigmod(a, d, n);
+bool millerTest(LL d, LL n) {
+    LL a = 2 + rng() % (n-4);
+    LL x = bigmod(a, d, n);
 
     if(x==1 || x==n-1) {
         return true;
@@ -51,16 +48,16 @@ bool millerTest(long long d, long long n) {
     return false;
 }
 
-bool isPrime(long long n, long long k) {
+bool isPrime(LL n, LL k) {
     if(n<=1 || n==4) return false;
     if(n<=3) return true;
 
-    long long d = n - 1;
+    LL d = n - 1;
     while(d%2==0) {
         d /= 2;
     }
 
-    for(long long i=0; i<k; i++) {
+    for(LL i=0; i<k; i++) {
         if(!millerTest(d, n)) return false;
     }
 
@@ -68,13 +65,7 @@ bool isPrime(long long n, long long k) {
 }
 
 int main () {
-    #ifdef forthright48
-    //freopen ( "input.txt", "r", stdin );
-    //freopen ( "output.txt", "w", stdout );
-    #endif // forthright48
-
-    //fast_cin;
-
+    
     int k = 10;
 
     cout << "All primes smaller than 1000:\n";
