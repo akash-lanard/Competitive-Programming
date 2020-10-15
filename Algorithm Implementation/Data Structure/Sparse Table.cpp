@@ -11,9 +11,10 @@ int query(int i, int j) {
 
 void build() {
     int i, l, d, len;
+
     for(i=2, lg[0]=lg[1]=0; i<MAX; i++) lg[i] = lg[i>>1]+1;
 
-    for(l=0; (l<<1)<=n; l++) {
+    for(l=0; (1<<l)<=n; l++) {
         len = 1<<l, d = len>>1;
         for(i=0; (i+len)<=n; i++) {
             if(!l) dp[l][i] = ar[i];
