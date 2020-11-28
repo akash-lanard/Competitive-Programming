@@ -16,7 +16,7 @@ struct SEGMENT_TREE {
     }
     inline void LazyPropagate(int node, int b, int e) {
         if(Lazy[node] != 0) {
-        Tree[node] += (Lazy[node] * (e-b+1));
+            Tree[node] += (Lazy[node] * (e-b+1));
             if(b != e) {
                 Lazy[2*node] += Lazy[node];
                 Lazy[2*node + 1] += Lazy[node];
