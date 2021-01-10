@@ -36,11 +36,8 @@ struct SEGMENT_TREE {
         LazyPropagate(node, b, e);
         if(i > e || j < b || b > e) return;
         if(i <= b && j >= e) {
-            Tree[node] += (val * (e-b+1));              /// change here
-            if(b != e) {
-                Lazy[2*node] += val;                    /// change here
-                Lazy[2*node + 1] += val;                /// change here
-            }
+            Lazy[node] = val;
+            LazyPropagate(node, b, e);
             return;
         }
         int left = node << 1, right = left | 1, mid = (b+e) >> 1;
