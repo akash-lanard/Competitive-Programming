@@ -14,37 +14,35 @@ struct info {
 };
 
 struct SegmentTree {
-    LL arr[SIZE], Tree[4*SIZE], S[4*SIZE], L[4*SIZE], R[4*SIZE];
+    LL arr[SIZE];
+    info Tree[4*SIZE];
 
     inline void Init() {
         memset(arr, 0, sizeof(arr));
         memset(Tree, 0, sizeof(Tree));
-        memset(S, 0, sizeof(S));
-        memset(L, 0, sizeof(L));
-        memset(R, 0, sizeof(R));
     }
     inline void Build(int node = 1, int b = 1, int e = N) {
         if(b > e) return;
 
-        if(b == e) { Tree[node] = S[node] = L[node] = R[node] = arr[b]; return; }
+        if(b == e) { Tree[node] = info(arr[b], arr[b], arr[b], arr[b]); return; }
 
         int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
 
         Build(left, b, mid);
         Build(right, mid+1, e);
 
-        Tree[node] = max(Tree[left], Tree[right]);                          /// change here
-        Tree[node] = max(Tree[node], R[left]+L[right]);
+        Tree[node].best = max(Tree[left].best, Tree[right].best);                          /// change here
+        Tree[node].best = max(Tree[node].best, Tree[left].right+Tree[right].left);
 
-        L[node] = max(L[left], S[left] + L[right]);
-        R[node] = max(R[right], S[right] + R[left]);
+        Tree[node].left = max(Tree[left].left, Tree[left].sum + Tree[right].left);
+        Tree[node].right = max(Tree[right].right, Tree[right].sum + Tree[left].right);
 
-        S[node] = S[left] + S[right];
+        Tree[node].sum = Tree[left].sum + Tree[right].sum;
     }
     inline info Query(int i, int j, int node = 1, int b = 1, int e = N) {
         if(i > e || j < b || b > e) return info(-inf, -inf, -inf, -inf);    /// change here
 
-        if(i <= b && j >= e) return info(Tree[node], S[node], L[node], R[node]);
+        if(i <= b && j >= e) return Tree[node];
 
         int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
 
