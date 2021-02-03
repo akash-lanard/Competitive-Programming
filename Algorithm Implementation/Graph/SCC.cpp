@@ -1,12 +1,10 @@
-int cnt;
-
 /// Strongly Connected Component
 /// Call findSCC() to find all the scc
 /// Call shrink() to convert each SCC into a single node
 /// Note: After shrink() if cycle[u] != u then just ignore the node
 /// Because in the new graph you only consider the scc heads
 
-const int NODE = 205; /// Maximum no of node (1 based indexing)
+const int NODE = 1005; /// Maximum no of node (1 based indexing)
 
 int disc[NODE], low[NODE], col[NODE], cycle[NODE], st[NODE];
 vector<int> G[NODE];
@@ -29,7 +27,7 @@ struct SCC{
         disc[u] = low[u] = Time++;
         col[u] = cc + 1;
         st[tail++] = u;
-        for(int i = 0;i<SZ(G[u]);i++) {
+        for(int i = 0;i<G[u].size();i++) {
             int v = G[u][i];
             if ( col[v] <= cc ) {
                 tarjan ( v );
@@ -46,13 +44,12 @@ struct SCC{
                 cycle[v] = u;
                 if ( u == v ) break;
             }
-            cnt++;
         }
     }
 
     void shrink( int N ) {
         for(int i = 1;i<=N;i++) {
-            for(int j = 0;j<SZ(G[i]);j++) {
+            for(int j = 0;j<G[i].size();j++) {
                 G[i][j] = cycle[G[i][j]];
                 /// This will create self-loop.
                 /// Just ignore i->i edges while processing.
@@ -61,20 +58,20 @@ struct SCC{
         for(int i = 1;i<=N;i++) {
             if ( cycle[i] == i ) continue;
             int u = cycle[i];
-            for(int j = 0;j<SZ(G[i]);j++) {
+            for(int j = 0;j<G[i].size();j++) {
                 int v = G[i][j];
                 G[u].pb ( v );
             }
             G[i].clear();
         }
         for(int i = 1;i<=N;i++) { /// Not always necessary
-            sort ( ALL(G[i]) );
+            sort ( G[i].begin(), G[i].end() );
             UNIQUE(G[i]);
         }
     }
 
     void findSCC( int N ) {
-        for(int i = 0;i<N;i++) {
+        for(int i = 1;i<=N;i++) {
             if ( col[i] <= cc ) {
                 tarjan ( i );
             }
