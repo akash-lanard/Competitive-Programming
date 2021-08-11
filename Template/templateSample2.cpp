@@ -1,40 +1,33 @@
 ///....................BASE TEMPLATE.........................
-///======= TEMPLATE STARTS HERE ==========///
+///====================== TEMPLATE STARTS HERE =====================///
 #include <bits/stdc++.h>
 using namespace std;
-// Include for built in treap
-//#include <ext/pb_ds/assoc_container.hpp> 
-//#include <ext/pb_ds/tree_policy.hpp>
-//using namespace __gnu_pbds;
 
-//#define gc getchar_unlocked   // for linux fast io
-//#define gc getchar            // for windows fast io
-
+#define endl "\n"
 #define pb push_back
 #define MP make_pair
 #define ff first
 #define ss second
-#define MIN(a,b) ((a)<(b)?(a):(b))
-#define MAX(a,b) ((a)>(b)?(a):(b))
 #define ABS(x) ((x)<0?-(x):(x))
 #define FABS(x) ((x)+eps<0?-(x):(x))
-#define SQ(x) ((x)*(x))
 #define LCM(x,y) (((x)/gcd((x),(y)))*(y))
 #define POPCOUNT __builtin_popcountll
-#define Set(N,p) N=((N)|((1LL)<<(p)))
-#define Reset(N,p) N=((N)&(~((1LL)<<(p))))
+#define Set(N,p) ((N)|((1LL)<<(p)))
+#define Reset(N,p) ((N)&(~((1LL)<<(p))))
 #define Check(N,p) (!(((N)&((1LL)<<(p)))==(0)))
 #define fast_cin ios_base::sync_with_stdio(false);cin.tie(NULL)
 
 #define LL long long
-typedef long long int vlong;
+#define LLU long long unsigned int
 typedef pair < int, int > pii;
-typedef pair < vlong, vlong > pll;
-//typedef tree <int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pb_ds;
+typedef pair < LL, LL > pll;
+typedef vector<int> vi;
+typedef vector<LL> vl;
+typedef vector<pll> vll;
 
-#ifdef forthright48
-    #define line           cout << "\n===================\n"
-    #define trace(...)   __f( #__VA_ARGS__ , __VA_ARGS__ )
+#ifdef s_da_sailor
+    #define line                    cout << "\n===================\n"
+    #define trace(...)              __f( #__VA_ARGS__ , __VA_ARGS__ )
     template <typename Arg1>
     void __f(const char* name, Arg1&& arg1){
         cerr << name << " = " << arg1 << "\n";
@@ -48,15 +41,15 @@ typedef pair < vlong, vlong > pll;
 #else
     #define line
     #define trace(...)
-#endif
+#endif // s_da_sailor
 
-inline vlong gcd ( vlong a, vlong b ) {
+inline LL gcd ( LL a, LL b ) {
     a = ABS ( a ); b = ABS ( b );
     while ( b ) { a = a % b; swap ( a, b ); } return a;
 }
 
-vlong ext_gcd ( vlong A, vlong B, vlong *X, vlong *Y ){
-    vlong x2, y2, x1, y1, x, y, r2, r1, q, r;
+LL ext_gcd ( LL A, LL B, LL *X, LL *Y ){
+    LL x2, y2, x1, y1, x, y, r2, r1, q, r;
     x2 = 1; y2 = 0;
     x1 = 0; y1 = 1;
     for (r2 = A, r1 = B; r1 != 0; r2 = r1, r1 = r, x2 = x1, y2 = y1, x1 = x, y1 = y ) {
@@ -69,16 +62,16 @@ vlong ext_gcd ( vlong A, vlong B, vlong *X, vlong *Y ){
     return r2;
 }
 
-inline vlong modInv ( vlong a, vlong m ) {
-    vlong x, y;
+inline LL modInv ( LL a, LL m ) {
+    LL x, y;
     ext_gcd( a, m, &x, &y );
     x %= m;
     if ( x < 0 ) x += m;
     return x;
 }
 
-inline vlong bigmod ( vlong a, vlong p, vlong m ) {
-    vlong res = 1 % m, x = a % m;
+inline LL bigmod ( LL a, LL p, LL m ) {
+    LL res = 1 % m, x = a % m;
     while ( p ) {
         if ( p & 1 ) res = ( res * x ) % m;
         x = ( x * x ) % m; p >>= 1; /// For bigmod2 multiply here using mulmod
@@ -86,27 +79,37 @@ inline vlong bigmod ( vlong a, vlong p, vlong m ) {
     return res;
 }
 
+
 //int knightDir[8][2] = { {-2,1},{-1,2},{1,2},{2,1},{2,-1},{-1,-2},{1,-2},{-2,-1} };
 //int dir4[4][2] = {{-1,0},{0,1},{1,0},{0,-1}};
 //int dir8[8][2] = {{-1,0},{0,1},{1,0},{0,-1},{-1,-1},{1,1},{1,-1},{-1,1}};
-const vlong inf = 2147383647;
-const vlong mod = 1000000007;
+const LL inf = 2147383647;
+const LL mod = 1000000007;
 const double pi = 2 * acos ( 0.0 );
 const double eps = 1e-11;
 //mt19937 rng(chrono::steady_clock::now().time_since_epoch().count()); /// For generating random numbers
-///=========  TEMPLATE ENDS HERE  =========///
+
+///======================  TEMPLATE ENDS HERE  =====================///
+
+void solve() {
+
+}
+
 int main () {
-    #ifdef forthright48
+    #ifdef s_da_sailor
     freopen ( "input.txt", "r", stdin );
     //freopen ( "output.txt", "w", stdout );
-    #endif // forthright48
+    #endif // s_da_sailor
 
     fast_cin;
 
+    solve();
+
     return 0;
 }
+
 ///........................SIEVE.............................
-#define SIZE 1000002
+#define SIZE 1000005
 vector<int> Prime; ///Prime vector
 int mark[SIZE]; ///1 if not prime, 0 if prime
 void sieve(int n) {
@@ -126,7 +129,7 @@ void sieve(int n) {
     }
 }
 ///.....................BITWISE SIEVE.........................
-#define SIZE 100000000 /// Check, Set, Reset must be defined
+#define SIZE 100000005 /// Check, Set, Reset must be defined
 int status[(SIZE/32)+2]; /// bit is 0 = prime, 1 = non-prime
 vector<int> Prime;  /// Prime vector
 void sieve(int N) {
@@ -147,7 +150,7 @@ void sieve(int N) {
     }
 }
 ///...................SEGMENTED SIEVE..............................
-#define SIZE 10000002
+#define SIZE 10000005
 vector<LL> Prime; ///Prime vector
 vector<LL> P; ///Primes till sqrt(n) (For sieve)
 void segmentedSieve(LL low, LL high) { /// Sieve must be included
@@ -431,181 +434,199 @@ void Union(int a, int b) {
     int u = FindRepresentative(a);
     int v = FindRepresentative(b);
     if(u!=v) {
-        parent[u] = v;
-        sz[v] += sz[u];
-    }
-}
-///...............Range Sum Range Update (CF blog).................
-#define SIZE 100005     /// Modify size if needed
-/// Basic segment tree (with lazy)
-/// Each node denotes the range [l, r) [Note: r is not included]
-/// S[l, r) = S[l, mid) + S[mid, r)
-/// Range sum range update
-/// 2 types of queries:
-/// 1. S l r: Sum in range from l to r  [Note: r is not included]
-/// 2. I l r x: Increase the values of index l to r to x [Note: r is not included]
-int N;              /// Number of elements
-int A[SIZE];        /// Elements (0-indexed)
-int S[4*SIZE];      /// Nodes in segment tree
-int lazy[4*SIZE];   /// Lazy array (for nodes)
-/// Build function to build the segment tree. Call build()
-void build(int id = 1, int l = 0, int r = N) {
-    if(r-l<2) {                 /// Reached at the leaf node
-        S[id] = A[l];
-        return;
-    }
-    int mid = (l+r)/2;          /// Split into two segments
-    build(id*2, l, mid);        /// Build left child
-    build(id*2+1, mid, r);      /// Build right child
-    S[id] = S[id*2] + S[id*2+1];/// Build current node
-}
-/// Function to update a node
-void upd(int id, int l, int r, int x) {
-    lazy[id] += x;              /// Increase all members in this interval by x
-    S[id] += (r-l)*x;
-}
-/// Function to pass update information to its children
-void shift(int id, int l, int r) {
-    int mid = (l+r)/2;
-    upd(id*2, l, mid, lazy[id]);    /// Pass update info to left child
-    upd(id*2+1, mid, r, lazy[id]);  /// Pass update info to right child
-    lazy[id] = 0;                   /// Passing is done
-}
-/// Update function to perform increase queries. Call increase(l, r, x)
-void increase(int x, int y, int v, int id = 1, int l = 0, int r = N) {
-    if(r<=x || y<=l) return;            /// Completely outside (no need to update)
-    if(x<=l && r<=y) {                  /// Completely inside
-        upd(id, l, r, v);               /// Update lazy
-        return;                         /// No need to update further
-    }
-    shift(id, l, r);                    /// Pass update info to the children
-    int mid = (l+r)/2;
-    increase(x, y, v, 2*id, l, mid);    /// Update left child
-    increase(x, y, v, 2*id+1, mid, r);  /// Update right child
-    S[id] = S[2*id] + S[2*id+1];        /// Update current node
-}
-/// Query function to get sum. Call sum(l, r)
-int sum(int x, int y, int id = 1, int l = 0, int r = N) {
-    if(r<=x || y<=l) return 0;      /// Completely outside
-    if(x<=l && r<=y) return S[id];  /// Completely inside
-    shift(id, l, r);                /// Pass update info to the children
-    int mid = (l+r)/2;
-    return sum(x, y, 2*id, l, mid) + sum(x, y, 2*id+1, mid, r); /// get sum from both child
-}
-///.....Hashing (hash of substrings of a string in O(1)).........
-struct Hashing {
-    LL *hash1, *hash2;
-    LL *inv1, *inv2;
-    int n;
-    LL mod1 = (LL) 1e9 + 97, mod2 = (LL) 1e9 + 9;
-    LL multiplier1 = 43, multiplier2 = 31;
-    LL invMultiplier1 = 441860508, invMultiplier2 = 838709685;
-    /// invMultiplier = modInv(multiplier, mod) //
-    Hashing() {}
-    Hashing(string &s) {
-        build_Hash(s);
-    }
-    void build_Hash(string &s) {
-        n = s.size();
-        hash1 = new LL[n + 1];
-        hash2 = new LL[n + 1];
-        inv1 = new LL[n + 1];
-        inv2 = new LL[n + 1];
-
-        hash1[0] = hash2[0] = 0;
-        inv1[0] = inv2[0] = 1;
-
-        LL p1 = 1, p2 = 1;
-        for (int i = 0; i < n; i++) {
-            hash1[i + 1] = (hash1[i] + s[i] * p1) % mod1;
-            p1 = (p1 * multiplier1) % mod1;
-            inv1[i + 1] = inv1[i] * invMultiplier1 % mod1;
-            hash2[i + 1] = (hash2[i] + s[i] * p2) % mod2;
-            p2 = (p2 * multiplier2) % mod2;
-            inv2[i + 1] = inv2[i] * invMultiplier2 % mod2;
+        if(sz[v]>=sz[u]) {
+            parent[u] = v;
+            sz[v] += sz[u];
+        }
+        else {
+           parent[v] = u;
+            sz[u] += sz[v];
         }
     }
-    LL getHash(int i, int j) { ///0-based, hash of substring [i, j]
-        return getHash_2(i, j - i + 1);
+}	     
+/// PURQ Struct Sum Query, Point Update & Range Query
+#define SIZE 100005
+int N, Q;
+struct SegmentTree {
+    int arr[SIZE], Tree[4*SIZE];
+    inline void Init() {
+        memset(Tree, 0, sizeof(Tree));
     }
-    LL getHash_2(int i, int len) { ///0- based, hash of substring [i, i+len-1]
-        return (((hash1[i + len] - hash1[i] + mod1) * inv1[i] % mod1) << 32)
-               + (hash2[i + len] - hash2[i] + mod2) * inv2[i] % mod2;
+    inline void Build(int node = 1, int b = 1, int e = N) {
+        if(b > e) return;
+        if(b == e) { Tree[node] = arr[b]; return; }
+        int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
+        Build(left, b, mid);
+        Build(right, mid+1, e);
+        Tree[node] = Tree[left] + Tree[right];              /// change here
     }
-    LL revHash(int i, int j) { ///0-based
-        return getHash(n - j - 1, n - i - 1);
+    inline void Update(int pos, int val, int node = 1, int b = 1, int e = N) {
+        if(pos > e || pos < b || b > e) return;
+        if(b == e && b == pos) { Tree[node] = arr[b] = val; return; }
+        int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
+        Update(pos, val, left, b, mid);
+        Update(pos, val, right, mid+1, e);
+        Tree[node] = Tree[left] + Tree[right];              /// change here
     }
-    void clear() {
-        delete (hash1);
-        delete (hash2);
-        delete (inv1);
-        delete (inv2);
+    inline int Query(int i, int j, int node = 1, int b = 1, int e = N) {
+        if(i > e || j < b || b > e) return 0;               /// change here
+        if(i <= b && j >= e) return Tree[node];
+        int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
+        int Q1 = Query(i, j, left, b, mid);
+        int Q2 = Query(i, j, right, mid+1, e);
+        return (Q1 + Q2);                                   /// change here
     }
-};
-Hashing hashing;
-///...................KMP(Ashishgup).................
-///String:
-vector<int> pre, occ;
-vector<int> prefix_function(string &s) {
-	int n = (int)s.length();
-	vector<int> pi(n);
-	for (int i = 1; i < n; i++) {
-		int j = pi[i-1];
-		while (j > 0 && s[i] != s[j])
-			j = pi[j-1];
-		if (s[i] == s[j])
-			j++;
-		pi[i] = j;
-	}
-	return pi;
-}
-vector<int> find_occurences(string &text, string &pattern) {
-	string cur=pattern + '#' + text;
-	int sz1=text.size(), sz2=pattern.size();
-	vector<int> v;
-	vector<int> lps=prefix_function(cur);
-	for(int i=sz2+1;i<=sz1+sz2;i++) {
-		if(lps[i]==sz2)
-			v.push_back(i-2*sz2);
-	}
-	return v;
-}
-///Vector:
-vector<int> prefix_function(vector<int> &v) {
-	int n = (int)v.size();
-	vector<int> pi(n);
-	for (int i = 1; i < n; i++) {
-		int j = pi[i-1];
-		while (j > 0 && v[i] != v[j])
-			j = pi[j-1];
-		if (v[i] == v[j])
-			j++;
-		pi[i] = j;
-	}
-	return pi;
-}
-vector<int> find_occurences(vector<int> &text, vector<int> &pattern) {
-	vector<int> v=pattern;
-	v.push_back(-1);
-	for(auto &it:text)
-		v.push_back(it);
-	int sz1=text.size(), sz2=pattern.size();
-	vector<int> lps=prefix_function(v);
-	vector<int> store;
-	for(int i=sz2+1;i<=sz1+sz2;i++) {
-		if(lps[i]==sz2)
-			store.push_back(i-sz2);
-	}
-	return v;
-}
+} ST;	      
+/// PURQ Struct (Merge Sort Tree)
+#define SIZE 30005
+int N, Q;
+struct SegmentTree {
+    int arr[SIZE];
+    vector<int> Tree[4*SIZE];
+    inline void Init() {
+        for(int i=0; i<4*SIZE; i++) Tree[i].clear();
+    }
+    inline void Build(int node = 1, int b = 1, int e = N) {
+        if(b > e) return;
+        if(b == e) { Tree[node].push_back(arr[b]); return; }
+        int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
+        Build(left, b, mid);
+        Build(right, mid+1, e);
+        merge(Tree[left].begin(), Tree[left].end(), Tree[right].begin(), Tree[right].end(), back_inserter(Tree[node]));
+    }
+    inline int Query(int i, int j, int val, int node = 1, int b = 1, int e = N) { /// Number of elements greater than val
+        if(i > e || j < b || b > e) return 0;
+        if(i <= b && j >= e) return (e-b+1) - (upper_bound(Tree[node].begin(), Tree[node].end(), val) - Tree[node].begin()); /// Change here
+        int left = node << 1 , right = left | 1 , mid = (b+e) >> 1;
+        int Q1 = Query(i, j, val, left, b, mid);
+        int Q2 = Query(i, j, val, right, mid+1, e);
+        return (Q1 + Q2);     /// Change here
+    }
+} ST;	       
+/// RURQ Struct  Sum Query, Range add value Update & Range sum Query
+#define SIZE 100005
+int N, Q;
+struct SEGMENT_TREE {
+    int arr[SIZE], Tree[4*SIZE], Lazy[4*SIZE];
+    inline void Init() {
+        memset(Tree, 0, sizeof(Tree));
+        memset(Lazy, 0, sizeof(Lazy));
+    }
+    inline void LazyPropagate(int node, int b, int e) {
+        if(Lazy[node] != 0) {
+            Tree[node] += (Lazy[node] * (e-b+1));       /// change here
+            if(b != e) {
+                Lazy[2*node] += Lazy[node];             /// change here
+                Lazy[2*node + 1] += Lazy[node];         /// change here
+            }
+            Lazy[node] = 0;
+        }
+    }
+    inline void Build(int node = 1, int b = 1, int e = N) {
+        if(b > e) return;
+        if(b == e) { Tree[node] = arr[b]; return; }
+        int left = node << 1, right = left | 1, mid = (b+e) >> 1;
+        Build(left, b, mid);
+        Build(right, mid+1, e);
+        Tree[node] = Tree[left] + Tree[right];          /// change here
+    }
+    inline void Update(int i, int j, int val, int node = 1, int b = 1, int e = N) {
+        LazyPropagate(node, b, e);
+        if(i > e || j < b || b > e) return;
+        if(i <= b && j >= e) {
+            Lazy[node] = val;
+            LazyPropagate(node, b, e);
+            return;
+        }
+        int left = node << 1, right = left | 1, mid = (b+e) >> 1;
+        Update(i, j, val, left, b, mid);
+        Update(i, j, val, right, mid + 1, e);
+        Tree[node] = Tree[left] + Tree[right];          /// change here
+    }
+    inline int Query(int i, int j, int node = 1, int b = 1, int e = N) {
+        LazyPropagate(node, b, e);
+        if(i > e || j < b || b > e) return 0;           /// change here
+        if(i <= b && j >= e) return Tree[node];
+        int left = node << 1, right = left | 1, mid = (b+e) >> 1;
+        int Q1 = Query(i, j, left, b, mid);
+        int Q2 = Query(i, j, right, mid+1, e);
+        return (Q1 + Q2);                               /// change here
+    }
+} ST;  
+/// RURQ Struct (Set1 Set0 Flip)        
+#define SIZE 1025000
+int N, Q;
+struct SEGMENT_TREE {
+    int arr[SIZE], Tree[4*SIZE], Lazy[4*SIZE];
+    inline void Init() {
+        memset(arr, 0, sizeof(arr));
+        memset(Tree, 0, sizeof(Tree));
+        memset(Lazy, -1, sizeof(Lazy));
+    }
+    inline void LazyPropagate(int node, int b, int e) {
+        if(Lazy[node] != -1) {
+            if(Lazy[node] == 1) Tree[node] = (e-b+1);
+            else if(Lazy[node] == 0) Tree[node] = 0;
+            else Tree[node] = (e-b+1) - Tree[node];
+            if(b != e) {
+                if(Lazy[node] != 2) {
+                    Lazy[2*node] = Lazy[node];
+                    Lazy[2*node + 1] = Lazy[node];
+                }
+                else {
+                    if(Lazy[2*node]==0) Lazy[2*node] = 1;
+                    else if(Lazy[2*node]==1) Lazy[2*node] = 0;
+                    else if(Lazy[2*node]==2) Lazy[2*node] = -1;
+                    else Lazy[2*node] = 2;
+                    if(Lazy[2*node + 1]==0) Lazy[2*node + 1] = 1;
+                    else if(Lazy[2*node + 1]==1) Lazy[2*node + 1] = 0;
+                    else if(Lazy[2*node + 1]==2) Lazy[2*node + 1] = -1;
+                    else Lazy[2*node + 1] = 2;
+                }
+            }
+            Lazy[node] = -1;
+        }
+    }
+    inline void Build(int node = 1, int b = 0, int e = N-1) {
+        if(b > e) return;
+        if(b == e) { Tree[node] = arr[b]; return; }
+        int left = node << 1, right = left | 1, mid = (b+e) >> 1;
+        Build(left, b, mid);
+        Build(right, mid+1, e);
+        Tree[node] = Tree[left] + Tree[right];
+    }
+    inline void Update(int i, int j, int val, int node = 1, int b = 0, int e = N-1) {
+        LazyPropagate(node, b, e);
+        if(i > e || j < b || b > e) return;
+        if(i <= b && j >= e) {
+            Lazy[node] = val;
+            LazyPropagate(node, b, e);
+            return;
+        }
+        int left = node << 1, right = left | 1, mid = (b+e) >> 1;
+        Update(i, j, val, left, b, mid);
+        Update(i, j, val, right, mid + 1, e);
+        Tree[node] = Tree[left] + Tree[right];
+    }
+    inline int Query(int i, int j, int node = 1, int b = 0, int e = N-1) {
+        LazyPropagate(node, b, e);
+        if(i > e || j < b || b > e) return 0;
+        if(i <= b && j >= e) {
+            return Tree[node];
+        }
+        int left = node << 1, right = left | 1, mid = (b+e) >> 1;
+        int Q1 = Query(i, j, left, b, mid);
+        int Q2 = Query(i, j, right, mid+1, e);
+        return (Q1 + Q2);
+    }
+} ST;       
 ///...........................Trie Array.........................
 #define SIZE 100000
 /// Trie Array Based Implementation
 /// Call insert() to insert new string
 /// Call search() to search a string
 struct node {
-    int cnt; /// Change here if you need
-    int child[55];
+    int cnt; int child[55]; /// Change here if you need
 };
 node T[SIZE];
 struct Trie {
@@ -616,8 +637,7 @@ struct Trie {
         id++;
     }
     void clear() {
-        id = 0;
-        createNode();
+        id = 0; createNode();
     }
     /// Returns the corresponding integer id of the character
     int FID(const char &c) {
@@ -656,8 +676,7 @@ struct Trie {
 /// Done for only digits by default
 #define SIZE 10
 class Trie {
-    bool ed;
-    Trie *child[SIZE];
+    bool ed; Trie *child[SIZE];
     /// If ed is true, a word is finished here
 public:
     Trie() {
@@ -693,147 +712,17 @@ public:
         return child[c]->search(word, ++pos);
     }
 }*root;
-///.......................BFS...............................
-#define SIZE 1005
-#define BIG 100000000
-vector<int> G[SIZE];    /// Graph
-int level[SIZE];        /// level of the nodes (distance, as the graph is unweighted)
-queue<int> Q;
-void BFS(int source) {
-    while(!Q.empty()) Q.pop();
-    for(int i=0; i<SIZE; i++) level[i] = BIG; /// initially the distance is inf (it is also used as visited)
-    Q.push(source);     /// push source node in queue
-    level[source] = 0;  /// level of source node is 0
-    while(!Q.empty()) {
-        int curr = Q.front();   /// curr node in the front of the queue, pop it
-        Q.pop();
-        for(int i = 0; i<G[curr].size(); i++) {
-            int next = G[curr][i];
-            if(level[next] == BIG) {    /// if next node is not updated update it
-                level[next] = level[curr] + 1;  /// update level of next node
-                Q.push(next);                   /// push next in the queue
-            }
-        }
-    }
-    return;
-}
-void clr() {
-    for(int i=0; i<SIZE; i++) G[i].clear();
-}
-///...................DFS..............................
-#define SIZE 50005
-vector<int> G[SIZE];
-///int visited[SIZE];
-int d[SIZE], f[SIZE], color[SIZE];
-int ttime;
-vector<int> lst;
-///int inDegree[SIZE];
-///int cnt;
-///int mark[SIZE];
-void DFS(int source) {
-    int u = source;
-    ///visited[u] = 1;
-    ttime++;
-    d[u] = ttime;
-    color[u] = 1;
-    ///cnt++;
-    ///mark[u] = 1;
-    for(int v = 0; v<G[u].size(); v++) {
-        int curr = G[u][v];
-        if(color[curr]==0) {
-            DFS(curr);
-        }
-        /**if(!visited[curr]) {
-            DFS(curr);
-        }*/
-    }
-    lst.push_back(u);
-    color[u] = 2;
-    ttime++;
-    f[u] = ttime;
-    return;
-}
-void clr() {
-    for(int i=0; i<SIZE; i++) G[i].clear();
-    ///memset(visited, 0, sizeof(visited));
-    memset(d, 0, sizeof(d));
-    memset(f, 0, sizeof(f));
-    memset(color, 0, sizeof(color));
-    lst.clear();
-    ttime = 0;
-    ///memset(inDegree, 0, sizeof(inDegree));
-    ///memset(mark, 0, sizeof(mark));
-}
-///.......................Dijkstra....................
-#define SIZE 100005
-#define BIG 1000000000000005
-typedef pair<int, LL> pil;
-vector<pil> G[SIZE];        /// Graph
-LL dis[SIZE];               /// distance array
-int pre[SIZE];              /// prev (for path print)
-struct Node {
-    int id;
-    LL dist;
-    Node() {}
-    Node(int id, LL dist) {
-        this->id = id;
-        this->dist = dist;
-    }
-    bool operator < (const Node &a)const {
-        return dist > a.dist;
-    }
-};
-priority_queue<Node> Q;
-void  dijkstra(int source) {
-    while(!Q.empty()) Q.pop();
-    for(int i=0; i<SIZE; i++) {
-        dis[i] = BIG;
-        pre[i] = -1;
-    }
-    Node s(source, 0);
-    Q.push(s);
-    dis[source] = 0;
-    while(!Q.empty()) {
-        Node curr = Q.top();
-        Q.pop();
-        int u = curr.id;
-        LL curr_dist = curr.dist;
-        if(curr_dist!=dis[u]) continue;
-        for(int i=0; i<G[u].size(); i++) {
-            int v = G[u][i].first;
-            LL cost = G[u][i].second;
-            if(dis[u]+cost < dis[v]) {
-                dis[v] = dis[u] + cost;
-                Node n(v, dis[v]);
-                Q.push(n);
-                pre[v] = u;
-            }
-        }
-    }
-}
-void clr() {
-    for(int i=0; i<SIZE; i++) G[i].clear();
-}
-/// .................For 2D BFS and Dijkstra.................
-int fx[] = {1, -1, 0, 0};
-int fy[] = {0, 0, 1, -1};
-int cell[100][100];
-int d[100][100], vis[100][100];
+
 ///......................MST(Kruskal's).......................
 /// DSU needs to be defined
 #define SIZE 3005
 int parent[SIZE];
-int flag;
-int cnt;
-int sum;
+int flag, cnt, sum;
 struct edge {
-    int u, v;
-    int w;
+    int u, v, w;
     edge() { }
     edge(int a, int b, int c) {
-        u = a;
-        v = b;
-        w = c;
+        u = a; v = b; w = c;
     }
 };
 bool comp(const edge& a, const edge& b) {
@@ -844,8 +733,7 @@ vector<edge> edgeVec;
 double mst(int n) {
     sort(edgeVec.begin(), edgeVec.end(), comp);
     init_disjoint_set(SIZE);
-    cnt = 0;
-    sum = 0;
+    cnt = 0; sum = 0;
     for(int i=0; i<edgeVec.size(); i++) {
         flag = 0;
         Union(edgeVec[i].u, edgeVec[i].v);
@@ -862,8 +750,7 @@ void clr() {
 }
 ///.....................Topsort......................
 #define SIZE 105
-vector<int> G[SIZE];
-vector<int> L;
+vector<int> G[SIZE], L;
 queue<int> Q;
 int inDegree[SIZE];/// Calculate while taking input
 void topsort(int N) {
@@ -875,8 +762,7 @@ void topsort(int N) {
         }
     }
     while(!Q.empty()) {
-        int u = Q.front();
-        Q.pop();
+        int u = Q.front(); Q.pop();
         L.push_back(u);
         for(int i=0; i<G[u].size(); i++) {
             int v = G[u][i];
@@ -900,8 +786,7 @@ int n;
 vector<pair<int, int> > G[SIZE];
 bool bellmanFord(int source) {
     for(int i=0; i<SIZE; i++) {
-        dis[i] = BIG;
-        pre[i] = -1;
+        dis[i] = BIG; pre[i] = -1;
     }
     dis[source] = 0;
     for(int i=1; i<=n-1; i++) {
@@ -937,8 +822,7 @@ void clr() {
 using namespace __gnu_pbds;
 /// Importing ends here.
 struct vals{ /// struct for declaring struct type pb_ds:
-    int num;
-    int typ;
+    int num, typ;
     vals(int a, int b){
         num = a;
         typ = b;
@@ -981,10 +865,7 @@ int main(){
 ///........................LIS NlogN............................
 #define Size 100005
 #define Mod 1000000007LL
-int N;
-int A[100005];
-int LIS[100005];
-int LDS[100005];
+int N, A[100005], LIS[100005], LDS[100005];
 vector<int> List;
 void calculate_LIS(){
     List.clear();
@@ -1079,12 +960,10 @@ struct matrix{
     LL m[MXR][MXC];
     matrix(){}
     matrix(int r, int c){
-        R = r;
-        C = c;
+        R = r; C = c;
     }
     void clear(int r, int c){
-        R = r;
-        C = c;
+        R = r; C = c;
     }
 };
 matrix multiply(matrix a, matrix b){
@@ -1112,15 +991,10 @@ matrix A, B, X;
 LL a, b; /// f(0) = a, f(1) = b
 void buildMatrix(){
     /// Set row column accordingly
-    A.clear(2, 2);
-    B.clear(2, 1);
+    A.clear(2, 2); B.clear(2, 1);
     /// Store initial values in the matrix
-    A.m[0][0] = 1;
-    A.m[0][1] = 1;
-    A.m[1][0] = 1;
-    A.m[1][1] = 0;
-    X.m[0][0] = b;
-    X.m[1][0] = a;
+    A.m[0][0] = 1; A.m[0][1] = 1; A.m[1][0] = 1; A.m[1][1] = 0;
+    X.m[0][0] = b; X.m[1][0] = a;
 }
 ///......................Mobius Function.............................
 /// Mobius function is a function which has one of the following values:
